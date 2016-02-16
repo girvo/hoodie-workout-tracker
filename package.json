@@ -1,0 +1,116 @@
+{
+  "name": "workout-tracker",
+  "version": "3.2.1",
+  "bundleDependencies": [
+    "hoodie-plugin-appconfig",
+    "hoodie-plugin-email",
+    "hoodie-plugin-users",
+    "hoodie-server"
+  ],
+  "dependencies": {
+    "babel-core": "^6.5.2",
+    "hoodie-client": "^3.4.0",
+    "hoodie-plugin-appconfig": "^2.0.1",
+    "hoodie-plugin-email": "^1.0.0",
+    "hoodie-plugin-users": "^2.2.2",
+    "hoodie-server": "^4.0.2",
+    "purecss": "^0.6.0",
+    "vue": "^1.0.16",
+    "vue-router": "^0.7.11"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
+    "browserify-global-shim": "^1.0.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "postcss-cli": "^2.5.1",
+    "postcss-import": "^8.0.2",
+    "postcss-scss": "^0.1.3",
+    "precss": "^1.4.0",
+    "watchify": "^3.7.0"
+  },
+  "engines": {
+    "node": ">=0.10.22"
+  },
+  "files": [
+    "www/"
+  ],
+  "hoodie": {
+    "plugins": [
+      "hoodie-plugin-appconfig",
+      "hoodie-plugin-email",
+      "hoodie-plugin-users"
+    ]
+  },
+  "scripts": {
+    "hoodie": "node node_modules/hoodie-server/bin/start",
+    "start": "npm run hoodie & npm run watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css css/app.css",
+    "build:js": "browserify src/app.js -o www/assets/js/app.js -t [ babelify --presets [ es2015 ] ]",
+    "watch:js": "watchify src/app.js -o www/assets/js/app.js -t [ babelify --presets [ es2015 ] ]",
+    "watch:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css --watch css/**/*.css css/app.css",
+    "sync": "browser-sync start --files ./www --proxy localhost:2403",
+    "watch": "npm run watch:js & npm run watch:css & npm run sync"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-global-shim"
+    ]
+  },
+  "browserify-global-shim": {
+    "dpd": "dpd"
+  },
+  "type": "app",
+  "gitHead": "33fdb70357c415bbed56bbbd5197c805c0264294",
+  "description": "[![Dependency Status](https://david-dm.org/hoodiehq/my-first-hoodie.svg)](https://david-dm.org/hoodiehq/my-first-hoodie)",
+  "_id": "my-first-hoodie@3.2.1",
+  "_shasum": "240df30b9664e56a04bb2ba2ad26c52e5691d763",
+  "_from": "my-first-hoodie@3.2.1",
+  "_npmVersion": "2.13.0",
+  "_nodeVersion": "2.3.0",
+  "_npmUser": {
+    "name": "boennemann",
+    "email": "stephan@boennemann.me"
+  },
+  "dist": {
+    "shasum": "240df30b9664e56a04bb2ba2ad26c52e5691d763",
+    "tarball": "http://registry.npmjs.org/my-first-hoodie/-/my-first-hoodie-3.2.1.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "svnlto",
+      "email": "me@svenlito.com"
+    },
+    {
+      "name": "caolan",
+      "email": "caolan.mcmahon@gmail.com"
+    },
+    {
+      "name": "gr2m",
+      "email": "gregor@martynus.net"
+    },
+    {
+      "name": "jan",
+      "email": "jan@apache.org"
+    },
+    {
+      "name": "espy",
+      "email": "hello@alexfeyerke.com"
+    },
+    {
+      "name": "boennemann",
+      "email": "stephan@boennemann.me"
+    },
+    {
+      "name": "hoodiebot",
+      "email": "stephan@thehoodiefirm.com"
+    }
+  ],
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/my-first-hoodie/-/my-first-hoodie-3.2.1.tgz",
+  "readme": "ERROR: No README data found!"
+}

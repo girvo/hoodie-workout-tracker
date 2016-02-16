@@ -1,0 +1,13 @@
+# Standard Node ignores
+/node_modules
+npm-debug.log
+
+# Hoodie specific ignores
+/data
+
+# Ignore assets but keep the folder
+/www/assets/css/*
+/www/assets/js/*
+
+# And keep .gitkeep around
+!.gitkeep

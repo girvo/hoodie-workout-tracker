@@ -1,0 +1,27 @@
+@import './variables';
+
+.custom-restricted-width {
+    display: inline-block;
+}
+
+.app-menu {
+    background-color: $brand-primary;
+    height: 100%;
+
+    .pure-menu-link {
+        color: $gray-lighter;
+
+        &:hover {
+            background-color: color($brand-primary lightness(50%));
+        }
+    }
+
+    .pure-menu-heading {
+        color: $gray-lightest;
+        font-weight: bold;
+    }
+}
+
+.active {
+    background-color: color($brand-primary lightness(55%));
+}

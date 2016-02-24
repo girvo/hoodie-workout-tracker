@@ -1,0 +1,18 @@
+/**
+ * Define some colors
+ */
+$gray-darkest: #333;
+$gray-darker: color($gray-darkest lightness(30%));
+$gray-dark: color($gray-darkest lightness(40%));
+$gray: color($gray-darkest lightness(50%));
+$gray-light: color($gray-darkest lightness(80%));
+$gray-lighter: color($gray-darkest lightness(85%));
+$gray-lightest: color($gray-darkest lightness(95%));
+
+/**
+ * Brand colours
+ */
+$brand-primary: #5B7E88;
+$brand-secondary: #826391;
+$brand-tertiary: #D7D990;
+$brand-quaternary: #DAB691;

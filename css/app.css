@@ -1,0 +1,62 @@
+/**
+ * Load PureCSS base framework
+ */
+@import 'purecss/build/pure.css';
+
+/**
+ * App styles
+ */
+@import './variables.css';
+@import './menu.css';
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.app {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $gray-lightest;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+
+    @media screen and (min-width: 1100px) {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+}
+
+h1, h2, h3, h4, h5 {
+    line-height: 1em;
+    margin: 0;
+}
+
+.login {
+    h2 {
+        width: 100%;
+        text-align: left;
+        line-height: 2em;
+    }
+
+    form {
+        width: 100%;
+    }
+}

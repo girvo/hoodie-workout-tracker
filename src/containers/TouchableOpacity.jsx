@@ -21,19 +21,25 @@ class TouchableOpacity extends Component
     }
 
     render() {
+        // Grab the opacity or default to 0.5
+        let {opacity} = this.props
+        opacity = opacity === null ? 0.5 : opacity
+
         // Clone our props and remove the children and className from them
         let props = Object.assign({}, this.props)
         delete props.children
-        delete props.className
+
+        let styles = {}
+        if (this.state.down) {
+            styles.opacity = 0.5
+        }
 
         return (
             <div
                 {...this.props}
                 onTouchStart={this.setDown.bind(this)}
                 onTouchEnd={this.setUp.bind(this)}
-                className={cx({
-                    'highlight-down': this.state.down
-                })}>
+                style={styles}>
                 {this.props.children}
             </div>
         )
@@ -41,7 +47,8 @@ class TouchableOpacity extends Component
 }
 
 TouchableOpacity.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.element,
+    activeOpacity: PropTypes.number,
 }
 
 export default TouchableOpacity

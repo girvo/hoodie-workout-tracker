@@ -28,10 +28,6 @@
         color: $brand-primary;
     }
 
-    .title-icon-down {
-        opacity: 0.5;
-    }
-
     .title-icon-content {
         display: flex;
         flex-direction: row;

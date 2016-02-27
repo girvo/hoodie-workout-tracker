@@ -5,7 +5,8 @@
     align-items: center;
     border-bottom: 1px solid $gray-light;
     background-color: #fff;
-    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -16,6 +17,8 @@
         font-family: $font-heading;
         font-weight: 300;
         font-size: 1.15em;
+        text-overflow: ellipsis;
+        height: 100%;
     }
 
     .title-icon {

@@ -1,6 +1,6 @@
 @import './variables';
 
-$width: 225px;
+$menu-width: 225px;
 
 .custom-restricted-width {
     display: inline-block;
@@ -14,9 +14,10 @@ $width: 225px;
 .app-menu {
     background-color: $brand-primary;
     height: 100%;
+    position: absolute;
 
     .hidden {
-        margin-left: -$width;
+        margin-left: -$menu-width;
     }
 
     .shown {

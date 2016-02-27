@@ -50,6 +50,8 @@ body {
 
 .content {
     flex: 1;
+    -webkit-overflow-scrolling: touch;
+    transition: all 0.3s;
 
     @media screen and (--screen-sm) {
         padding: 20px;
@@ -73,6 +75,12 @@ body {
     @media screen and (--screen-sm) {
         padding-top: 0;
     }
+}
+
+.content-menu-open {
+    position: absolute;
+    width: 100vw;
+    left: $menu-width;
 }
 
 h1, h2, h3, h4, h5 {

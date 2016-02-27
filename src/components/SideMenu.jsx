@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {
+    Component,
+    PropTypes,
+} from 'react'
+
 import { Link } from 'react-router'
 import cx from 'classnames'
 
-class SideMenu extends React.Component
+class SideMenu extends Component
 {
     render() {
         const classes = cx({
@@ -16,21 +20,17 @@ class SideMenu extends React.Component
         return (
             <div className={classes}>
                 <span className='pure-menu-heading main-heading'>
-                    <Link className='heading' to='/'>
+                    <Link className='heading' to='/' onClick={this.props.closeMenu}>
                         Workout Tracker
                     </Link>
                 </span>
                 <ul className='pure-menu-list'>
-                    {!this.props.loggedIn
-                        ?
-                            <li className='pure-menu-item'>
-                                <Link to='/login' className='pure-menu-link' activeClassName='active'>
-                                    Login
-                                </Link>
-                            </li>
-                        :
-                            <li></li>
-                    }
+                    {!this.props.loggedIn ?
+                        <li className='pure-menu-item'>
+                            <Link to='/login' className='pure-menu-link' activeClassName='active' onClick={this.props.closeMenu}>
+                                Login
+                            </Link>
+                        </li> : <li></li> }
                 </ul>
             </div>
         );
@@ -38,8 +38,9 @@ class SideMenu extends React.Component
 }
 
 SideMenu.propTypes = {
-    shown: React.PropTypes.bool.isRequired,
-    loggedIn: React.PropTypes.bool.isRequired,
+    shown: PropTypes.bool.isRequired,
+    loggedIn: PropTypes.bool.isRequired,
+    closeMenu: PropTypes.func.isRequired
 }
 
 export default SideMenu

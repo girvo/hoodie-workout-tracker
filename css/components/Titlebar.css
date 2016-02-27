@@ -1,0 +1,46 @@
+@import '../variables.css';
+
+.titlebar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $gray-light;
+    background-color: #fff;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+    .title {
+        flex: 1;
+        text-align: center;
+        font-family: $font-heading;
+        font-weight: 300;
+        font-size: 1.15em;
+    }
+
+    .title-icon {
+        width: 80px;
+        height: 40px;
+        overflow: hidden;
+        color: $brand-primary;
+    }
+
+    .title-icon-down {
+        opacity: 0.5;
+    }
+
+    .title-icon-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+    }
+
+    .title-icon-label {
+        font-size: 0.9em;
+    }
+
+    .left {
+
+    }
+}

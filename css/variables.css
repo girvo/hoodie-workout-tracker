@@ -1,4 +1,13 @@
 /**
+ * Breakpoints using postcss-custom-media and postcss-media-minmax
+ * Adapted from: http://purecss.io/grids/
+ */
+@custom-media --screen-sm (min-width: 35.5em);
+@custom-media --screen-md (min-width: 48em);
+@custom-media --screen-lg (width <= 64em);
+@custom-media --screen-xl (width <= 80em);
+
+/**
  * Define some colors
  */
 $gray-darkest: #333;
@@ -7,7 +16,7 @@ $gray-dark: color($gray-darkest lightness(40%));
 $gray: color($gray-darkest lightness(50%));
 $gray-light: color($gray-darkest lightness(80%));
 $gray-lighter: color($gray-darkest lightness(85%));
-$gray-lightest: color($gray-darkest lightness(95%));
+$gray-lightest: color($gray-darkest lightness(97%));
 
 /**
  * Brand colours
@@ -16,3 +25,8 @@ $brand-primary: #5B7E88;
 $brand-secondary: #826391;
 $brand-tertiary: #D7D990;
 $brand-quaternary: #DAB691;
+
+/**
+ * Font families
+ */
+$font-heading: 'BlinkMacSystemFont', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;

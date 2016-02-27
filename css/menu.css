@@ -1,24 +1,52 @@
 @import './variables';
 
+$width: 225px;
+
 .custom-restricted-width {
     display: inline-block;
+    max-width: $width;
+
+    @media screen and (--screen-sm) {
+        max-width: none;
+    }
 }
 
 .app-menu {
     background-color: $brand-primary;
     height: 100%;
 
+    .hidden {
+        margin-left: -$width;
+    }
+
+    .shown {
+        margin-left: 0px;
+    }
+
     .pure-menu-link {
-        color: $gray-lighter;
+        color: #eee;
 
         &:hover {
             background-color: color($brand-primary lightness(50%));
         }
+
+        &:focus {
+            background-color: color($brand-primary lightness(60%));
+        };
     }
 
     .pure-menu-heading {
-        color: $gray-lightest;
-        font-weight: bold;
+        color: $gray-darkest;
+        background: $brand-tertiary;
+    }
+
+    .main-heading {
+        padding: 30px;
+    }
+
+    .pure-menu-heading .heading {
+        color: $gray-darkest;
+        text-decoration: none;
     }
 }
 

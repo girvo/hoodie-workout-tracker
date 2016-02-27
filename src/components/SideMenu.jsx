@@ -5,26 +5,41 @@ import cx from 'classnames'
 class SideMenu extends React.Component
 {
     render() {
+        const classes = cx({
+            'app-menu': true,
+            'pure-menu': true,
+            'custom-restricted-width': true,
+            'shown': this.props.shown,
+            'hidden': !this.props.shown,
+        })
+
         return (
-            <div className='app-menu pure-menu custom-restricted-width'>
-                <span className='pure-menu-heading'>Workout Tracker</span>
+            <div className={classes}>
+                <span className='pure-menu-heading main-heading'>
+                    <Link className='heading' to='/'>
+                        Workout Tracker
+                    </Link>
+                </span>
                 <ul className='pure-menu-list'>
-                    <li className='pure-menu-item'>
-                        <Link to='/login' className='pure-menu-link' activeClassName='active'>
-                            Login
-                        </Link>
-                    </li>
-                    <li className='pure-menu-item'><a href='#' className='pure-menu-link'>Messenger</a></li>
-                    <li className='pure-menu-item'><a href='#' className='pure-menu-link'>Sports</a></li>
-                    <li className='pure-menu-item'><a href='#' className='pure-menu-link'>Finance</a></li>
-                    <li className='pure-menu-heading'>More Sites</li>
-                    <li className='pure-menu-item'><a href='#' className='pure-menu-link'>Games</a></li>
-                    <li className='pure-menu-item'><a href='#' className='pure-menu-link'>News</a></li>
-                    <li className='pure-menu-item'><a href='#' className='pure-menu-link'>OMG!</a></li>
+                    {!this.props.loggedIn
+                        ?
+                            <li className='pure-menu-item'>
+                                <Link to='/login' className='pure-menu-link' activeClassName='active'>
+                                    Login
+                                </Link>
+                            </li>
+                        :
+                            <li></li>
+                    }
                 </ul>
             </div>
         );
     }
+}
+
+SideMenu.propTypes = {
+    shown: React.PropTypes.bool.isRequired,
+    loggedIn: React.PropTypes.bool.isRequired,
 }
 
 export default SideMenu

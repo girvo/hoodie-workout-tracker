@@ -65,6 +65,16 @@ class Login extends Component
                         Login
                     </button>
                 </form>
+
+                <div
+                    className={cx({
+                        'error': true,
+                        'login-errors': true,
+                    })}
+                    hidden={!this.props.user.hasErrors}>
+                    Error: {this.props.user.hasErrors ? this.props.user.error.message : ''}
+                </div>
+
                 <div className='login-signup'>
                     <p>Don't have an account?</p>
                     <Link to='/signup'>Click here to sign-up</Link>

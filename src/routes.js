@@ -28,7 +28,7 @@ const updatePageTitle = (nextState) => {
 }
 
 let routes = (
-    <Route component={AppHandler}>
+    <Route component={AppHandler} onUpdate={(a,b) => { console.log(a, b) }}>
         <Route title='Welcome' name='home' path='/' component={Home} onEnter={updatePageTitle} />
         <Route title='Login' name='login' path='/login' component={LoginPage} onEnter={updatePageTitle} />
         <Route title='Sign-up' name='signup' path='/signup' component={SignUp} onEnter={updatePageTitle} />

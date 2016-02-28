@@ -1,6 +1,7 @@
 import {observable, computed} from 'mobx'
 import autoBind from 'react-autobind'
 import hoodie from '../hoodie'
+import UIStore from './UIStore'
 
 export class UserStore
 {
@@ -8,7 +9,11 @@ export class UserStore
     @observable password = ''
     @observable loading = false
     @observable error = null
+    @observable details = null
     @observable loggedIn = false
+    @computed get hasErrors() {
+        return this.error !== null
+    }
 
     constructor() {
         if (hoodie.account.isSignedIn()) {
@@ -17,17 +22,20 @@ export class UserStore
         }
 
         // Bind to our hoodie events
-        hoodie.account.on('signup', (username) => {
-            this.username = username
+        hoodie.account.on('signup', (details) => {
+            this.username = details.username
+            this.details = details
         })
 
-        hoodie.account.on('signout', (username) => {
+        hoodie.account.on('signout', (details) => {
             this.username = ''
+            this.details = null
             this.loggedIn = false
         })
 
-        hoodie.account.on('signin', (username) => {
-            this.username = username
+        hoodie.account.on('signin', (details) => {
+            this.username = details.username
+            this.details = details
             this.loggedIn = true
         })
 
@@ -36,6 +44,7 @@ export class UserStore
 
     login({ username, password }) {
         this.loading = true
+        this.error = null
 
         hoodie.account
             .signIn({
@@ -44,7 +53,7 @@ export class UserStore
             })
             .then(res => {
                 this.loading = false
-                console.log(res)
+                UIStore.router.push('/')
             })
             .catch(err => {
                 this.loading = false
@@ -54,12 +63,14 @@ export class UserStore
 
     logout() {
         this.loading = true
+        this.error = null
 
         // Sign-out via Hoodie, which will trigger the event listeners above
         hoodie.account
             .signOut()
-            .then(username => {
+            .then(details => {
                 this.loading = false
+                UIStore.router.push('/')
             })
             .catch(err => {
                 this.loading = false
@@ -69,6 +80,7 @@ export class UserStore
 
     signUp({username, password}) {
         this.loading = true
+        this.error = null
 
         hoodie.account
             .signUp({

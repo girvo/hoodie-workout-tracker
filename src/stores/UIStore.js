@@ -6,7 +6,7 @@ export class UIStore
     @observable pageTitle = 'Workout'
     @observable menuOpen = false
     @observable loading = false
-    @observable location = {}
+    @observable router = null
 
     constructor() {
         autoBind(this)

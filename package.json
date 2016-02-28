@@ -15,7 +15,8 @@
     "react-autobind": "^1.0.6",
     "react-dom": "^0.14.7",
     "react-icons": "^1.0.3",
-    "react-router": "^2.0.0"
+    "react-router": "^2.0.0",
+    "recompose": "^0.15.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.2",

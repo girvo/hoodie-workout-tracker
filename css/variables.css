@@ -27,6 +27,11 @@ $brand-tertiary: #D7D990;
 $brand-quaternary: #DAB691;
 
 /**
+ * Notifications
+ */
+$notify-danger: #EA5555;
+
+/**
  * Font families
  */
 $font-heading: 'BlinkMacSystemFont', -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;

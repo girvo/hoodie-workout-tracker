@@ -21,6 +21,14 @@ class App extends Component
         user: PropTypes.instanceOf(UserStore).isRequired,
     }
 
+    static contextTypes = {
+        router: PropTypes.object.isRequired
+    }
+
+    componentWillMount() {
+        this.props.ui.router = this.context.router
+    }
+
     render() {
         return (
             <div className='app'>

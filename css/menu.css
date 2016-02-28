@@ -1,23 +1,22 @@
 @import './variables';
 
+/* Menu-specific variables */
 $menu-width: 225px;
-
-.custom-restricted-width {
-    display: inline-block;
-    max-width: $width;
-
-    @media screen and (--screen-sm) {
-        max-width: none;
-    }
-}
+$menu-transition: all 0.3s;
+$link-touch-background: #eee;
 
 .app-menu {
+    display: inline-block;
     background-color: $brand-primary;
     height: 100%;
     position: absolute;
-    transition: all 0.3s;
+    transition: $menu-transition;
     left: -$menu-width;
-    max-width: $width;
+    max-width: $menu-width;
+
+    @media screen and (--screen-md) {
+        left: 0px !important;
+    }
 
     &.shown {
         left: 0px;
@@ -25,6 +24,11 @@ $menu-width: 225px;
 
     .pure-menu-link {
         color: #eee;
+        transition: all 0.15s;
+
+        &:active {
+            background-color: transparent;
+        }
 
         &:hover {
             background-color: color($brand-primary lightness(50%));
@@ -32,7 +36,11 @@ $menu-width: 225px;
 
         &:focus {
             background-color: color($brand-primary lightness(60%));
-        };
+        }
+
+        &.down {
+            background-color: color($brand-primary lightness(50%));
+        }
     }
 
     .pure-menu-heading {

@@ -25,3 +25,12 @@
         margin-bottom: 5px;
     }
 }
+
+.error {
+    color: #fff;
+    background-color: $notify-danger;
+    border-radius: 3px;
+    text-align: left;
+    padding: 20px;
+    margin-top: 20px;
+}

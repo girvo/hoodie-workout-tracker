@@ -29,7 +29,7 @@ class SignUp extends Component
         const btnClass = cx({
             'pure-button': true,
             'pure-button-primary': true,
-            'pure-button-disabled': disabled,
+            'pure-button-disabled': disabled || this.props.user.loading,
             'login-button': true,
         })
 

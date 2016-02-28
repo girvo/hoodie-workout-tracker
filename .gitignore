@@ -4,6 +4,7 @@ npm-debug.log
 
 # Hoodie specific ignores
 /data
+/_*
 
 # Ignore assets but keep the folder
 /www/assets/css/*

@@ -6,13 +6,16 @@ import React, {
 import cx from 'classnames'
 import {observer} from 'mobx-react'
 import {Link} from 'react-router'
+
 import UIStore from '../stores/UIStore'
+import UserStore from '../stores/UserStore'
 
 @observer
 class SideMenu extends Component
 {
     static defaultProps = {
-        ui: UIStore
+        ui: UIStore,
+        user: UserStore,
     }
 
     static propTypes = {
@@ -26,25 +29,42 @@ class SideMenu extends Component
             'pure-menu': true,
             'custom-restricted-width': true,
             'shown': this.props.shown,
-            'hidden': !this.props.shown,
         })
 
         let loginLinks = [
-            <li key='login' className='pure-menu-item'>
-                <Link to='/login' className='pure-menu-link' activeClassName='active' onClick={this.props.ui.closeMenu}>
-                    Login
-                </Link>
-            </li>,
-
-            <li key='signup' className='pure-menu-item'>
-                <Link to='/signup' className='pure-menu-link' activeClassName='active' onClick={this.props.ui.closeMenu}>
-                    Sign-up
-                </Link>
+            <li key='accounts' className='pure-menu-heading'>
+                Account
             </li>
         ]
 
+        if (!this.props.loggedIn) {
+            loginLinks.push(
+                <li key='login' className='pure-menu-item'>
+                    <Link to='/login' className='pure-menu-link' activeClassName='active' onClick={this.props.ui.closeMenu}>
+                        Login
+                    </Link>
+                </li>
+            )
+
+            loginLinks.push(
+                <li key='signup' className='pure-menu-item'>
+                    <Link to='/signup' className='pure-menu-link' activeClassName='active' onClick={this.props.ui.closeMenu}>
+                        Sign-up
+                    </Link>
+                </li>
+            )
+        } else {
+            loginLinks.push(
+                <li key='signout' className='pure-menu-item'>
+                    <a className='pure-menu-link' onClick={this.props.user.logout}>
+                        Logout
+                    </a>
+                </li>
+            )
+        }
+
         return (
-            <div className={classes}>
+            <div key='sidemenu' className={classes}>
                 <span className='pure-menu-heading main-heading'>
                     <Link className='heading' to='/' onClick={this.props.ui.closeMenu}>
                         Workout Tracker
@@ -56,7 +76,7 @@ class SideMenu extends Component
                             Home
                         </Link>
                     </li>
-                    {!this.props.loggedIn ? loginLinks : <li></li>}
+                    {loginLinks}
                 </ul>
             </div>
         );

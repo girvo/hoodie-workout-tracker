@@ -15,13 +15,12 @@ $menu-width: 225px;
     background-color: $brand-primary;
     height: 100%;
     position: absolute;
+    transition: all 0.3s;
+    left: -$menu-width;
+    max-width: $width;
 
-    .hidden {
-        margin-left: -$menu-width;
-    }
-
-    .shown {
-        margin-left: 0px;
+    &.shown {
+        left: 0px;
     }
 
     .pure-menu-link {

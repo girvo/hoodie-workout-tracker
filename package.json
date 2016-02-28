@@ -1,21 +1,12 @@
 {
   "name": "workout-tracker",
-  "version": "0.1.0",
-  "bundleDependencies": [
-    "hoodie-plugin-appconfig",
-    "hoodie-plugin-email",
-    "hoodie-plugin-users",
-    "hoodie-server"
-  ],
+  "version": "0.2.0",
   "dependencies": {
     "babel-core": "^6.5.2",
     "classnames": "^2.2.3",
     "di-decorators": "^0.2.2",
+    "hoodie": "git://github.com/hoodiehq/hoodie#tent",
     "hoodie-client": "^3.4.0",
-    "hoodie-plugin-appconfig": "^2.0.1",
-    "hoodie-plugin-email": "^1.0.0",
-    "hoodie-plugin-users": "^2.2.2",
-    "hoodie-server": "^4.0.2",
     "joi": "^8.0.3",
     "mobx": "^2.0.0",
     "mobx-react": "^3.0.0",
@@ -54,31 +45,19 @@
     "watchify": "^3.7.0"
   },
   "engines": {
-    "node": ">=0.10.22"
-  },
-  "files": [
-    "www/"
-  ],
-  "hoodie": {
-    "plugins": [
-      "hoodie-plugin-appconfig",
-      "hoodie-plugin-email",
-      "hoodie-plugin-users"
-    ]
+    "node": ">=4"
   },
   "scripts": {
-    "hoodie": "node node_modules/hoodie-server/bin/start",
+    "hoodie": "hoodie",
     "start": "npm run hoodie & npm run watch",
     "build:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css css/app.css",
     "build:js": "browserify src/app.js -o www/assets/js/app.js -t [ babelify ]",
     "watch:js": "watchify src/app.js -o www/assets/js/app.js -t [ babelify ]",
-    "watch:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css --watch css/**/*.css css/app.css",
-    "sync": "browser-sync start --files ./www --proxy localhost:6004",
+    "watch:css": "watch 'npm run build:css' css/ --ignoreDotFiles --ignoreUnreadable",
+    "sync": "browser-sync start --files ./www --proxy localhost:8080",
     "watch": "npm run watch:js & npm run watch:css & npm run sync",
     "test": "BABEL_ENV=test babel-tape-runner tests/unit/**/*.js* | tap-spec",
     "test:browser": "rm -f tests/tests.js && reload -b -d tests -p 7001 & watchify tests/browser.js tests/unit/**/*.js tests/unit/**/*.jsx -o tests/tests.js -t [ babelify ]",
     "test:watch": "watch 'node tests/clear.js && BABEL_ENV=test babel-tape-runner \"tests/unit/**/*.js*\" | node_modules/.bin/tap-min' tests/ src/ --ignoreDotFiles --ignoreUnreadable"
-  },
-  "type": "app",
-  "readme": "ERROR: No README data found!"
+  }
 }

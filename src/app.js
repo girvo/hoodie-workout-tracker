@@ -1,12 +1,12 @@
 // @flow weak
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import hoodie from './hoodie'
 import { Router, Route, browserHistory } from 'react-router'
 
 import routes from './routes'
 
-ReactDOM.render((
+render((
     <Router history={browserHistory}>
         {routes}
     </Router>

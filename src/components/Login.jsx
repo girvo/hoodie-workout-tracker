@@ -1,15 +1,19 @@
 import React from 'react'
 import cx from 'classnames'
+import {observer} from 'mobx-react'
 
+import UIStore from '../stores/UIStore'
+
+@observer
 class Login extends React.Component
 {
-    constructor(props) {
-        super(props)
+    state = {
+        username: '',
+        password: '',
+    }
 
-        this.state = {
-            username: '',
-            password: '',
-        }
+    static defaultProps = {
+        ui: UIStore
     }
 
     render() {

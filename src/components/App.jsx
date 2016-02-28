@@ -1,56 +1,47 @@
 import React from 'react'
 import { PropTypes } from 'react'
 import { RouteHandler, Link } from 'react-router'
+
 import cx from 'classnames'
+import {observer} from 'mobx-react'
+import DevTools from 'mobx-react-devtools';
 
 import SideMenu from './SideMenu.jsx'
 import Titlebar from './Titlebar.jsx'
-
 import { MenuButton } from './Buttons.jsx'
 
+import UIStore from '../stores/UIStore'
+
+@observer
 class App extends React.Component
 {
-    constructor(props) {
-        super(props)
-        this.state = {
-            menu: false
-        }
-    }
-
-    toggle() {
-        if (this.state.menu) {
-            this.setState({ menu: false })
-        } else {
-            this.setState({ menu: true })
-        }
-    }
-
-    close() {
-        this.setState({ menu: false })
-    }
-
     render() {
         return (
             <div className='app'>
                 <SideMenu
-                    shown={this.state.menu}
+                    shown={this.props.ui.menuOpen}
                     loggedIn={false}
-                    closeMenu={this.close.bind(this)}
                 />
 
                 {/* This renders the sub-route components */}
-                <div className={cx({ 'content': true, 'content-menu-open': this.state.menu })}>
+                <div className={cx({
+                    'content': true,
+                    'content-menu-open': this.props.ui.menuOpen
+                })}>
                     <Titlebar
-                        title='Workouts'
-                        left={<MenuButton onClick={this.toggle.bind(this)} />}
+                        title='Workout Tracker'
+                        left={<MenuButton onClick={this.props.ui.toggleMenu} />}
                     />
                     <div className='content-body'>
                         {this.props.children}
                     </div>
                 </div>
+
+                {/* MobX in-browser dev tools */}
+                {/*<DevTools />*/}
             </div>
         )
     }
 }
-
+//{React.cloneElement(this.props.children, { ui: UIStore })}
 export default App

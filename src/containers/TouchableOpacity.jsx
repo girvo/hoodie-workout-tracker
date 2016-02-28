@@ -4,12 +4,22 @@ import React, {
 } from 'react'
 
 import cx from 'classnames'
+import autoBind from 'react-autobind'
 
 class TouchableOpacity extends Component
 {
+    state = {
+        down: false
+    }
+
+    static propTypes = {
+        children: PropTypes.element,
+        activeOpacity: PropTypes.number,
+    }
+
     constructor(props) {
         super(props)
-        this.state = { down: false }
+        autoBind(this)
     }
 
     setDown() {
@@ -25,10 +35,6 @@ class TouchableOpacity extends Component
         let {opacity} = this.props
         opacity = opacity === null ? 0.5 : opacity
 
-        // Clone our props and remove the children and className from them
-        let props = Object.assign({}, this.props)
-        delete props.children
-
         let styles = {}
         if (this.state.down) {
             styles.opacity = 0.5
@@ -37,18 +43,13 @@ class TouchableOpacity extends Component
         return (
             <div
                 {...this.props}
-                onTouchStart={this.setDown.bind(this)}
-                onTouchEnd={this.setUp.bind(this)}
+                onTouchStart={this.setDown}
+                onTouchEnd={this.setUp}
                 style={styles}>
                 {this.props.children}
             </div>
         )
     }
-}
-
-TouchableOpacity.propTypes = {
-    children: PropTypes.element,
-    activeOpacity: PropTypes.number,
 }
 
 export default TouchableOpacity

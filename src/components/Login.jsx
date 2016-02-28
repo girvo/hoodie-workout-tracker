@@ -3,24 +3,21 @@ import cx from 'classnames'
 import {observer} from 'mobx-react'
 
 import UIStore from '../stores/UIStore'
+import UserStore from '../stores/UserStore'
 
 @observer
 class Login extends React.Component
 {
-    state = {
-        username: '',
-        password: '',
-    }
-
     static defaultProps = {
-        ui: UIStore
+        ui: UIStore,
+        user: UserStore,
     }
 
     render() {
         const btnClass = cx({
             'pure-button': true,
             'pure-button-primary': true,
-            'pure-button-disabled': this.state.username.length <= 0 || this.state.password.length <= 0
+            'pure-button-disabled': this.props.user.username.length <= 0 || this.props.user.password.length <= 0
         })
 
         return (
@@ -33,14 +30,15 @@ class Login extends React.Component
                             className='pure-input-1'
                             type='text'
                             placeholder='Username'
-                            onChange={ev => this.setState({ username: ev.target.value })}
+                            value={this.props.user.username}
+                            onChange={ev => this.props.user.username = ev.target.value }
                         />
                         <input
                             id='password'
                             className='pure-input-1'
                             type='password'
                             placeholder='Password'
-                            onChange={(ev) => this.setState({ password: ev.target.value })}
+                            onChange={(ev) => this.props.user.password = ev.target.value }
                         />
                     </fieldset>
 
@@ -48,7 +46,8 @@ class Login extends React.Component
                         type='submit'
                         className={btnClass}
                         onClick={ev => {
-                            ev.preventDefault();
+                            ev.preventDefault()
+                            this.props.user.login()
                         }}>
                         Submit
                     </button>

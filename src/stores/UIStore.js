@@ -30,6 +30,4 @@ export class UIStore
 
 // Instatiate the singleton
 let singleton = new UIStore()
-
-// Export the singleton, not the class
 export default singleton

@@ -66,15 +66,6 @@
     "sync": "browser-sync start --files ./www --proxy localhost:6004",
     "watch": "npm run watch:js & npm run watch:css & npm run sync"
   },
-  "browserify": {
-    "transform": [
-      "stringify",
-      "browserify-global-shim"
-    ]
-  },
-  "browserify-global-shim": {
-    "dpd": "dpd"
-  },
   "type": "app",
   "readme": "ERROR: No README data found!"
 }

@@ -29,6 +29,20 @@ class SideMenu extends Component
             'hidden': !this.props.shown,
         })
 
+        let loginLinks = [
+            <li key='login' className='pure-menu-item'>
+                <Link to='/login' className='pure-menu-link' activeClassName='active' onClick={this.props.ui.closeMenu}>
+                    Login
+                </Link>
+            </li>,
+
+            <li key='signup' className='pure-menu-item'>
+                <Link to='/signup' className='pure-menu-link' activeClassName='active' onClick={this.props.ui.closeMenu}>
+                    Sign-up
+                </Link>
+            </li>
+        ]
+
         return (
             <div className={classes}>
                 <span className='pure-menu-heading main-heading'>
@@ -42,12 +56,7 @@ class SideMenu extends Component
                             Home
                         </Link>
                     </li>
-                    {!this.props.loggedIn ?
-                        <li className='pure-menu-item'>
-                            <Link to='/login' className='pure-menu-link' activeClassName='active' onClick={this.props.ui.closeMenu}>
-                                Login
-                            </Link>
-                        </li> : <li></li> }
+                    {!this.props.loggedIn ? loginLinks : <li></li>}
                 </ul>
             </div>
         );

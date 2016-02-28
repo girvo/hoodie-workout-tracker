@@ -1,0 +1,27 @@
+@import '../variables';
+
+.login {
+    h2 {
+        width: 100%;
+        text-align: left;
+        line-height: 2em;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+.login-button {
+    width: 100%;
+}
+
+.login-signup {
+    text-align: center;
+    padding: 30px;
+    margin-top: 20px;
+
+    p {
+        margin-bottom: 5px;
+    }
+}

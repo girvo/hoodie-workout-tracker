@@ -1,19 +1,21 @@
 /**
  * Load PureCSS base framework
  */
-@import 'purecss/build/pure.css';
+@import 'purecss/build/pure';
 
 /**
  * App styles
  */
-@import './variables.css';
-@import './menu.css';
-@import './buttons.css';
+@import './variables';
+@import './menu';
+@import './buttons';
 
 /**
  * Component styles
  */
-@import './components/Titlebar.css';
+@import './components/Titlebar';
+@import './components/Login';
+@import './components/SignUp';
 
 body {
     /**
@@ -65,7 +67,7 @@ body {
 }
 
 .content-body {
-    padding-top: 52px;
+    padding-top: 57px;
     padding-left: 10px;
     padding-right: 10px;
 
@@ -87,16 +89,4 @@ body {
 h1, h2, h3, h4, h5 {
     line-height: 1em;
     margin: 0;
-}
-
-.login {
-    h2 {
-        width: 100%;
-        text-align: left;
-        line-height: 2em;
-    }
-
-    form {
-        width: 100%;
-    }
 }

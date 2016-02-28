@@ -5,7 +5,8 @@ export class UIStore
 {
     @observable pageTitle = 'Workout'
     @observable menuOpen = false
-    @observable loggedIn = false
+    @observable loading = false
+    @observable location = {}
 
     constructor() {
         autoBind(this)
@@ -26,8 +27,15 @@ export class UIStore
     closeMenu() {
         this.menuOpen = false
     }
+
+    updateLocation(location) {
+        this.location = Object.assign({}, location)
+    }
 }
 
 // Instatiate the singleton
 let singleton = new UIStore()
 export default singleton
+
+// $Debug
+window.ui = singleton

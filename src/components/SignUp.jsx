@@ -1,6 +1,6 @@
 import React, {
     PropTypes,
-    Component,
+    Component
 } from 'react'
 
 import cx from 'classnames'
@@ -11,15 +11,21 @@ import UIStore from '../stores/UIStore'
 import UserStore from '../stores/UserStore'
 
 @observer
-class Login extends Component
+class SignUp extends Component
 {
+    // Uses internal state so we can collate and send off to hoodie
+    state = {
+        username: '',
+        password: '',
+    }
+
     static defaultProps = {
         ui: UIStore,
         user: UserStore,
     }
 
     render() {
-        const disabled = this.props.user.username.length <= 0 || this.props.user.password.length <= 0
+        const disabled = this.state.username.length <= 0 || this.state.password.length <= 7
         const btnClass = cx({
             'pure-button': true,
             'pure-button-primary': true,
@@ -28,7 +34,7 @@ class Login extends Component
         })
 
         return (
-            <div className='login'>
+            <div className='signup'>
                 <form className='pure-form'>
                     <fieldset className='pure-group'>
                         <input
@@ -36,15 +42,14 @@ class Login extends Component
                             className='pure-input-1'
                             type='text'
                             placeholder='Username'
-                            value={this.props.user.username}
-                            onChange={ev => this.props.user.username = ev.target.value }
+                            onChange={ev => this.setState({ username: ev.target.value })}
                         />
                         <input
                             id='password'
                             className='pure-input-1'
                             type='password'
                             placeholder='Password'
-                            onChange={(ev) => this.props.user.password = ev.target.value }
+                            onChange={ev => this.setState({ password: ev.target.value })}
                         />
                     </fieldset>
 
@@ -54,19 +59,15 @@ class Login extends Component
                         onClick={ev => {
                             ev.preventDefault()
                             if (!disabled) {
-                                this.props.user.login()
+                                this.props.user.signUp(Object.assign({}, this.state))
                             }
                         }}>
-                        Login
+                        Create account
                     </button>
                 </form>
-                <div className='login-signup'>
-                    <p>Don't have an account?</p>
-                    <Link to='/signup'>Click here to sign-up</Link>
-                </div>
             </div>
         )
     }
 }
 
-export default Login
+export default SignUp

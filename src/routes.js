@@ -12,23 +12,26 @@ import App from './components/App.jsx'
 // Pages
 import Home from './components/Home.jsx'
 import LoginPage from './components/Login.jsx'
+import SignUp from './components/SignUp.jsx'
 
 // Global stores
 import UIStore from './stores/UIStore'
+import UserStore from './stores/UserStore'
 
 // Wrap our entry point with the UIStore binding
-let UIHandler = (props) => <App {...props} ui={UIStore} />
+let AppHandler = (props) => <App {...props} ui={UIStore} user={UserStore} />
 
 // onEnter function to bind page titles to our UIStore
 const updatePageTitle = (nextState) => {
-    const {title} = nextState.routes[1]
-    UIStore.updatePageTitle(title)
+    UIStore.updatePageTitle(nextState.routes[1].title)
+    UIStore.updateLocation(nextState.location)
 }
 
 let routes = (
-    <Route component={UIHandler}>
+    <Route component={AppHandler}>
         <Route title='Welcome' name='home' path='/' component={Home} onEnter={updatePageTitle} />
         <Route title='Login' name='login' path='/login' component={LoginPage} onEnter={updatePageTitle} />
+        <Route title='Sign-up' name='signup' path='/signup' component={SignUp} onEnter={updatePageTitle} />
     </Route>
 )
 

@@ -1,10 +1,10 @@
 import Hoodie from 'hoodie-client'
+import Account from 'hoodie-client-account'
 
-let hoodieInstance = new Hoodie({
-    url: 'http://127.0.0.1:6004/_api'
-})
+let hoodieInstance = new Hoodie()
 
 export default hoodieInstance
 
 // $Debug
-window.hoodie = hoodieInstance
+global.hoodie = hoodieInstance
+global.Account = Account

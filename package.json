@@ -16,6 +16,7 @@
     "hoodie-plugin-email": "^1.0.0",
     "hoodie-plugin-users": "^2.2.2",
     "hoodie-server": "^4.0.2",
+    "joi": "^8.0.3",
     "mobx": "^2.0.0",
     "mobx-react": "^3.0.0",
     "purecss": "^0.6.0",
@@ -35,11 +36,22 @@
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
     "browserify-global-shim": "^1.0.3",
+    "cli-clear": "^1.0.4",
     "mobx-react-devtools": "^4.0.0",
     "postcss-cli": "^2.5.1",
     "postcss-import": "^8.0.2",
     "postcss-scss": "^0.1.3",
     "precss": "^1.4.0",
+    "reload": "^0.7.0",
+    "simple-mock": "^0.6.0",
+    "tap-browser-el": "^2.0.0",
+    "tap-min": "^1.1.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.4.0",
+    "tape-catch": "^1.0.4",
+    "tape-dom": "0.0.10",
+    "tapes": "^3.1.0",
+    "watch": "^0.17.1",
     "watchify": "^3.7.0"
   },
   "engines": {
@@ -58,13 +70,15 @@
   "scripts": {
     "hoodie": "node node_modules/hoodie-server/bin/start",
     "start": "npm run hoodie & npm run watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css css/app.css",
     "build:js": "browserify src/app.js -o www/assets/js/app.js -t [ babelify ]",
     "watch:js": "watchify src/app.js -o www/assets/js/app.js -t [ babelify ]",
     "watch:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css --watch css/**/*.css css/app.css",
     "sync": "browser-sync start --files ./www --proxy localhost:6004",
-    "watch": "npm run watch:js & npm run watch:css & npm run sync"
+    "watch": "npm run watch:js & npm run watch:css & npm run sync",
+    "test": "BABEL_ENV=test babel-node ./node_modules/.bin/tapes tests/unit/**/*.js* | node_modules/.bin/tap-spec",
+    "test:browser": "rm -f tests/tests.js && reload -b -d tests -p 7001 & watchify tests/browser.js tests/unit/**/*.js tests/unit/**/*.jsx -o tests/tests.js -t [ babelify ]",
+    "test:watch": "watch './node_modules/.bin/babel-node tests/clear.js && BABEL_ENV=test ./node_modules/.bin/babel-node node_modules/.bin/tapes \"tests/unit/**/*.js*\" | node_modules/.bin/tap-min' tests/ src/ --ignoreDotFiles --ignoreUnreadable"
   },
   "type": "app",
   "readme": "ERROR: No README data found!"

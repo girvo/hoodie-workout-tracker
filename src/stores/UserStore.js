@@ -48,10 +48,11 @@ export class UserStore
         .signUp({username, password})
         .then(u => {
             alert('Signed in: ', u)
+            this.loading = false
         })
         .catch(err => {
-            alert('caught')
             console.error(err)
+            this.loading = false
         })
     }
 }
@@ -61,4 +62,4 @@ let singleton = new UserStore()
 export default singleton
 
 // $Debug
-window.user = singleton
+global.user = singleton

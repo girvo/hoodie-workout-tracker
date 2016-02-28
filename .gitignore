@@ -9,5 +9,8 @@ npm-debug.log
 /www/assets/css/*
 /www/assets/js/*
 
+# Test utils
+/tests/tests.js
+
 # And keep .gitkeep around
 !.gitkeep

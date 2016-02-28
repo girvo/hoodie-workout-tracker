@@ -38,4 +38,4 @@ let singleton = new UIStore()
 export default singleton
 
 // $Debug
-window.ui = singleton
+global.ui = singleton

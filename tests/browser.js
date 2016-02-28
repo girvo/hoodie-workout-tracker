@@ -2,18 +2,13 @@
  * Entry point for browser test runner.
  * Loads polyfills and sets up DOM rendering of test results
  */
-import tapBrowser from 'tap-browser-el'
+import test from 'tape'
 
-tapBrowser({
-    el: document.getElementById('tests'),
-    outPutToConsole: true,
-    css: {
-        '.tap-test.pass': {
-            background: '#0F0'
-        },
-
-        '.tap-test.fail': {
-            background: '#F00'
-        }
-    },
-})
+if (typeof(window) === 'object') {
+    let tapeDom = require('tape-dom')
+    tapeDom.installCSS()
+    tapeDom.stream(test)
+} else {
+    console.error('ERROR: This script is only to be run in the browser')
+    console.error('ERROR: The results below will not be accurate in this environment\n')
+}

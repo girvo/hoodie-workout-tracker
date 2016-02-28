@@ -32,6 +32,7 @@
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-1": "^6.5.0",
+    "babel-tape-runner": "^2.0.1",
     "babelify": "^7.2.0",
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
@@ -48,9 +49,7 @@
     "tap-min": "^1.1.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.4.0",
-    "tape-catch": "^1.0.4",
     "tape-dom": "0.0.10",
-    "tapes": "^3.1.0",
     "watch": "^0.17.1",
     "watchify": "^3.7.0"
   },
@@ -76,9 +75,9 @@
     "watch:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css --watch css/**/*.css css/app.css",
     "sync": "browser-sync start --files ./www --proxy localhost:6004",
     "watch": "npm run watch:js & npm run watch:css & npm run sync",
-    "test": "BABEL_ENV=test babel-node ./node_modules/.bin/tapes tests/unit/**/*.js* | node_modules/.bin/tap-spec",
+    "test": "BABEL_ENV=test babel-tape-runner tests/unit/**/*.js* | tap-spec",
     "test:browser": "rm -f tests/tests.js && reload -b -d tests -p 7001 & watchify tests/browser.js tests/unit/**/*.js tests/unit/**/*.jsx -o tests/tests.js -t [ babelify ]",
-    "test:watch": "watch './node_modules/.bin/babel-node tests/clear.js && BABEL_ENV=test ./node_modules/.bin/babel-node node_modules/.bin/tapes \"tests/unit/**/*.js*\" | node_modules/.bin/tap-min' tests/ src/ --ignoreDotFiles --ignoreUnreadable"
+    "test:watch": "watch 'node tests/clear.js && BABEL_ENV=test babel-tape-runner \"tests/unit/**/*.js*\" | node_modules/.bin/tap-min' tests/ src/ --ignoreDotFiles --ignoreUnreadable"
   },
   "type": "app",
   "readme": "ERROR: No README data found!"

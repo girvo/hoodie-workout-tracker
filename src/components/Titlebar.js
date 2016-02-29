@@ -7,7 +7,7 @@ import cx from 'classnames'
 import {observer} from 'mobx-react'
 
 import UIStore from '../stores/UIStore'
-import TouchableOpacity from '../containers/TouchableOpacity.jsx'
+import TouchableOpacity from '../containers/TouchableOpacity'
 
 // Pure sub-components
 let Title = ({title}) => <span className='title'>{title}</span>

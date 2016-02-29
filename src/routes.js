@@ -7,12 +7,12 @@ import React, {
 import { Route, IndexRoute } from 'react-router'
 
 // Entry-point
-import App from './components/App.jsx'
+import App from './components/App'
 
 // Pages
-import Home from './components/Home.jsx'
-import LoginPage from './components/Login.jsx'
-import SignUp from './components/SignUp.jsx'
+import Home from './components/Home'
+import LoginPage from './components/Login'
+import SignUp from './components/SignUp'
 
 // Global stores
 import UIStore from './stores/UIStore'

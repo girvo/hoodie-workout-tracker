@@ -13,5 +13,8 @@ npm-debug.log
 # Test utils
 /tests/tests.js
 
+# OS specific
+.DS_Store
+
 # And keep .gitkeep around
 !.gitkeep

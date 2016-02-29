@@ -2,6 +2,7 @@
  * Entry point for browser test runner.
  * Loads polyfills and sets up DOM rendering of test results
  */
+import 'babel-polyfill'
 import test from 'tape'
 
 if (typeof(window) === 'object') {

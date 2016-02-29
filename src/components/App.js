@@ -6,9 +6,9 @@ import cx from 'classnames'
 import {observer} from 'mobx-react'
 import DevTools from 'mobx-react-devtools';
 
-import SideMenu from './SideMenu.jsx'
-import Titlebar from './Titlebar.jsx'
-import { MenuButton } from './Buttons.jsx'
+import SideMenu from './SideMenu'
+import Titlebar from './Titlebar'
+import { MenuButton } from './Buttons'
 
 import { UIStore } from '../stores/UIStore'
 import { UserStore } from '../stores/UserStore'

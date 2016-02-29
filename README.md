@@ -2,16 +2,14 @@
 
 ## Pre-requisites
 
-- `envv`: https://github.com/jakewendt/envv (`brew instal envv`)
-- `nvm`: https://github.com/creationix/nvm (follow instructions)
-- `CouchDB`: http://couchdb.apache.org/ (either install in your host, or with Docker)
+- `envv`: https://github.com/jakewendt/envv &mdash; `brew install envv`
+- `nvm`: https://github.com/creationix/nvm &mdash; follow instructions in README
+- `CouchDB`: http://couchdb.apache.org/ &mdash; either install in your host, or with Docker
 
 ## Building
 
 - `npm install`
-- Setup environment variables
- - Development: `source .env/dev`
- - Production: `source .env/prod`
+- `source .env/[dev|prod]`
 - `npm test`
 - `npm build`
 

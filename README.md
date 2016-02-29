@@ -8,8 +8,9 @@
 
 ## Building
 
+- `nvm use`
 - `npm install`
-- `source .env/[dev|prod]`
+- `source .env/(dev|prod)`
 - `npm test`
 - `npm build`
 
@@ -19,7 +20,7 @@
 - Adjust the `.hoodierc` file to have the correct credentials and IP address
 - Run `git update-index --assume-unchanged .hoodierc` after making your changes
 - `npm run hoodie`
-- Navigate to [](http://localhost:8080)
+- Navigate to [http://localhost:8080](http://localhost:8080)
 
 ## License
 

@@ -4,9 +4,7 @@ import {mock, stub} from 'simple-mock'
 // Unit under test
 import {UIStore} from '../../../src/stores/UIStore'
 
-test('UIStore', t => {
-    t.comment(`This store is a somewhat simple global data-store for all UI state`)
-
+test('store/UIStore', t => {
     t.plan(2)
 
     t.test('testing something is true', t => {

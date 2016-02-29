@@ -1,4 +1,4 @@
-@import './variables';
+@import '../variables';
 
 /* Menu-specific variables */
 $menu-width: 225px;

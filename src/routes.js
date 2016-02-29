@@ -27,8 +27,8 @@ const updatePageTitle = (nextState) => {
     UIStore.updateLocation(nextState.location)
 }
 
-let routes = (
-    <Route component={AppHandler} onUpdate={(a,b) => { console.log(a, b) }}>
+const routes = (
+    <Route component={AppHandler} onUpdate={() => { alert('App updating via router') }}>
         <Route title='Welcome' name='home' path='/' component={Home} onEnter={updatePageTitle} />
         <Route title='Login' name='login' path='/login' component={LoginPage} onEnter={updatePageTitle} />
         <Route title='Sign-up' name='signup' path='/signup' component={SignUp} onEnter={updatePageTitle} />

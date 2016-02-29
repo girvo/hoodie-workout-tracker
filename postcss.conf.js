@@ -4,5 +4,8 @@ module.exports = {
         onImport: function(sources) {
             global.watchCSS(sources);
         }
+    },
+    "autoprefixer": {
+        browsers: ['last 2 versions']
     }
 }

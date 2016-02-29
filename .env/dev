@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Environment variable overrides for development
+# Load with: `source .env/dev`
+source .env/prod
+eval `envv set NODE_ENV development`

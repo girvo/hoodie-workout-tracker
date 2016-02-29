@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Project-specific environment variables (production)
+# Load with: `source .env/prod`
+eval `envv set NODE_ENV production`

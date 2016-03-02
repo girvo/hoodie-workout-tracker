@@ -32,12 +32,11 @@ class TouchableOpacity extends Component
 
     render() {
         // Grab the opacity or default to 0.5
-        let {opacity} = this.props
-        opacity = opacity === null ? 0.5 : opacity
+        let {opacity = 0.5} = this.props
 
         let styles = {}
         if (this.state.down) {
-            styles.opacity = 0.5
+            styles.opacity = opacity
         }
 
         return (

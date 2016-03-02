@@ -54,19 +54,21 @@
         "transform": ["babelify"]
     },
     "scripts": {
+        "build": "parallelshell 'npm run build:js' 'npm run build:css'",
+        "build:js": "browserify src/app.js -o www/assets/js/app.js",
+        "build:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css css/app.css",
+        "docker:couchdb": "",
         "hoodie": "hoodie",
         "start": "parallelshell 'npm run hoodie' 'npm run watch'",
-        "build:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css css/app.css",
-        "build:js": "browserify src/app.js -o www/assets/js/app.js",
-        "watch:js": "watchify src/app.js -o www/assets/js/app.js",
-        "watch:css": "onchange 'css/**/*.css' -- npm run build:css",
         "sync": "browser-sync start --files ./www --proxy localhost:8080",
-        "watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run sync'",
         "test": "BABEL_ENV=test babel-tape-runner tests/unit/**/*.js | tap-spec",
         "test:browser": "parallelshell 'npm run test:watchify' 'npm run test:serve'",
         "test:min": "node tests/clear.js && BABEL_ENV=test babel-tape-runner 'tests/unit/**/*.js' | tap-min",
         "test:watch": "onchange 'tests/**/*.js' 'src/**/*.js' -- npm run test:min --silent",
         "test:watchify": "watchify tests/browser.js tests/unit/**/*.js -o tests/tests.js",
-        "test:serve": "reload -b -d ./tests -p 7001"
+        "test:serve": "reload -b -d ./tests -p 7001",
+        "watch": "parallelshell 'npm run watch:js' 'npm run watch:css' 'npm run sync'",
+        "watch:css": "onchange 'css/**/*.css' -- npm run build:css",
+        "watch:js": "watchify src/app.js -o www/assets/js/app.js"
     }
 }

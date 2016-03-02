@@ -2,8 +2,8 @@
  * Breakpoints using postcss-custom-media and postcss-media-minmax
  * Adapted from: http://purecss.io/grids/
  */
-@custom-media --screen-sm (min-width: 35.5em);
-@custom-media --screen-md (min-width: 48em);
+@custom-media --screen-sm (width <= 35.5em);
+@custom-media --screen-md (width <= 48em);
 @custom-media --screen-lg (width <= 64em);
 @custom-media --screen-xl (width <= 80em);
 

@@ -1,29 +1,16 @@
-import React, {
-    PropTypes,
-    Component,
-} from 'react'
-
-import cx from 'classnames'
+import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
-import {observer} from 'mobx-react'
+import cx from 'classnames'
 
-import UIStore from '../stores/UIStore'
-import UserStore from '../stores/UserStore'
-
-@observer
-class Login extends Component
+class Login extends React.Component
 {
     state = {
         username: '',
         password: '',
     }
 
-    static defaultProps = {
-        ui: UIStore,
-        user: UserStore,
-    }
-
     render() {
+        const {error} = this.props
         const disabled = this.state.username.length <= 0 || this.state.password.length <= 0
         const btnClass = cx({
             'pure-button': true,
@@ -59,7 +46,7 @@ class Login extends Component
                         onClick={ev => {
                             ev.preventDefault()
                             if (!disabled) {
-                                this.props.user.login(this.state)
+                                console.log(this.state)
                             }
                         }}>
                         Login
@@ -71,8 +58,8 @@ class Login extends Component
                         'error': true,
                         'login-errors': true,
                     })}
-                    hidden={!this.props.user.hasErrors}>
-                    Error: {this.props.user.hasErrors ? this.props.user.error.message : ''}
+                    hidden={true}>
+                    Error: {false ? this.props.user.error.message : ''}
                 </div>
 
                 <div className='login-signup'>

@@ -18,6 +18,10 @@ class Login extends React.Component
         }
     }
 
+    componentDidMount() {
+        this.props.setTitle('Login')
+    }
+
     render() {
         const {error} = this.props
         const disabled = this.state.username.length <= 0 || this.state.password.length <= 0

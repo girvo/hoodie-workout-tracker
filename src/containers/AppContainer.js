@@ -13,7 +13,8 @@ class AppContainer extends React.Component
         return (
             <App
                 menuOpen={this.props.menuOpen}
-                toggleMenu={this.props.actions.toggleMenu}>
+                toggleMenu={this.props.actions.toggleMenu}
+                title={this.props.title}>
                 {/* Render the children as normal for react-router */}
                 {this.props.children}
             </App>
@@ -23,6 +24,7 @@ class AppContainer extends React.Component
 
 const mapStateToProps = (state) => ({
     menuOpen: state.ui.menuOpen,
+    title: state.ui.toolbarTitle,
 })
 
 const mapDispatchToProps = (dispatch) => ({

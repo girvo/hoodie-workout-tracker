@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
-import LoginPage from '../components/Login'
+import HomePage from '../components/Home'
 
 // State management
 import {bindActionCreators} from 'redux'
@@ -8,17 +8,16 @@ import {connect} from 'react-redux'
 import * as UIActions from '../actions/UIActions'
 import * as AccountActions from '../actions/AccountActions'
 
-class LoginContainer extends React.Component
+class HomeContainer extends React.Component
 {
     render() {
         return (
-            <LoginPage
+            <HomePage
                 loggedIn={this.props.loggedIn}
                 user={this.props.user}
                 loading={this.props.loading}
                 error={this.props.error}
-                account={this.props.account}
-                setTitle={this.props.ui.setTitle}
+                actions={this.props.actions}
             />
         )
     }
@@ -32,8 +31,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    account: bindActionCreators(AccountActions, dispatch),
-    ui: bindActionCreators(UIActions, dispatch),
+    actions: {
+        account: bindActionCreators(AccountActions, dispatch),
+        ui: bindActionCreators(UIActions, dispatch),
+    }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)

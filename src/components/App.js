@@ -22,7 +22,7 @@ class App extends React.Component
                     'content-menu-open': this.props.menuOpen
                 })}>
                     <Titlebar
-                        title='Workout Tracker'
+                        title={this.props.title}
                         left={<MenuButton onClick={this.props.toggleMenu} />}
                     />
                     <div className='content-body'>

@@ -17,3 +17,10 @@ export function closeMenu() {
         type: types.MENU_CLOSE
     }
 }
+
+export function setTitle(title) {
+    return {
+        type: types.SET_TITLE,
+        payload: { title, }
+    }
+}

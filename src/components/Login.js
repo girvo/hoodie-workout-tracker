@@ -9,6 +9,15 @@ class Login extends React.Component
         password: '',
     }
 
+    errorToMessage(error) {
+        switch (error.name) {
+            case 'UnauthorizedError':
+                return 'Invalid login credentials'
+            default:
+                return 'Unknown error occurred'
+        }
+    }
+
     render() {
         const {error} = this.props
         const disabled = this.state.username.length <= 0 || this.state.password.length <= 0
@@ -46,7 +55,10 @@ class Login extends React.Component
                         onClick={ev => {
                             ev.preventDefault()
                             if (!disabled) {
-                                console.log(this.state)
+                                this.props.account.login(
+                                    this.state.username,
+                                    this.state.password
+                                )
                             }
                         }}>
                         Login
@@ -58,8 +70,8 @@ class Login extends React.Component
                         'error': true,
                         'login-errors': true,
                     })}
-                    hidden={true}>
-                    Error: {false ? this.props.user.error.message : ''}
+                    hidden={error === null}>
+                    Error: {error !== null ? this.errorToMessage(error) : ''}
                 </div>
 
                 <div className='login-signup'>

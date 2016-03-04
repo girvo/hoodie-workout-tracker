@@ -6,7 +6,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import thunk from 'redux-thunk'
-import reducers from './reducers'
+import * as reducers from './reducers'
 
 // Routes
 import routes from './routes'

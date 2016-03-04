@@ -63,7 +63,7 @@
     "build": "parallelshell 'npm run build:js' 'npm run build:css'",
     "build:js": "browserify src/app.js -o www/assets/js/app.js",
     "build:css": "postcss -c postcss.conf.js -s postcss-scss -o www/assets/css/app.css css/app.css",
-    "docker:couchdb": "",
+    "docker:couchdb": "docker run -it --rm -p 5984:5984 -v $PWD/couch:/usr/local/var/lib/couchdb klaemo/couchdb:latest",
     "hoodie": "hoodie",
     "start": "parallelshell 'npm run hoodie' 'npm run watch'",
     "sync": "browser-sync start --files ./www --proxy localhost:8080",

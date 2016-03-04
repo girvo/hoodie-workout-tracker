@@ -7,14 +7,6 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as UIActions from '../actions/UIActions'
 
-const mapStateToProps = (state) => ({
-    shown: state.ui.menuOpen,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(UIActions, dispatch),
-})
-
 class SideMenuContainer extends React.Component
 {
     render() {
@@ -27,5 +19,13 @@ class SideMenuContainer extends React.Component
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    shown: state.ui.menuOpen,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(UIActions, dispatch),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenuContainer)

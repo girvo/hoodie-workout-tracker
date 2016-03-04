@@ -31,7 +31,7 @@ class SideMenu extends Component
             loginLinks.push(<MenuLink key='login' to='/login' {...this.props}>Login</MenuLink>)
             loginLinks.push(<MenuLink key='signup' to='/signup' {...this.props}>Sign-up</MenuLink>)
         } else {
-            loginLinks.push(<MenuLink key='signout' childType='a' onClick={() => alert('logout'))} {...this.props}>Logout</MenuLink>)
+            loginLinks.push(<MenuLink key='signout' childType='a' onClick={() => alert('logout')} {...this.props}>Logout</MenuLink>)
         }
 
         return (

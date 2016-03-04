@@ -5,7 +5,8 @@ import createStore from '../lib/createStore'
 const initialState = Immutable({
     loggedIn: false,
     account: null,
-    isLoading: false,
+    loading: false,
+    error: null,
 })
 
 function loginBegin(state, action) {
@@ -13,15 +14,15 @@ function loginBegin(state, action) {
 }
 
 function loginSuccess(state, action) {
-    return state;
+    return state.set('loading', true);
 }
 
 function loginError(state, action) {
-    return state;
+    return state.set('loading', false).set('error', action.error);
 }
 
 export default createStore(initialState, {
     [types.HOODIE_LOGIN_REQUEST]: loginBegin,
-    [types.HOODIE_LOGIN_SUCCESS]: login,
+    [types.HOODIE_LOGIN_SUCCESS]: loginSuccess,
     [types.HOODIE_LOGIN_FAILURE]: loginError,
 })

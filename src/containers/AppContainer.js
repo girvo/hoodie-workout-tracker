@@ -7,14 +7,6 @@ import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as UIActions from '../actions/UIActions'
 
-const mapStateToProps = (state) => ({
-    menuOpen: state.ui.menuOpen,
-})
-
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(UIActions, dispatch),
-})
-
 class AppContainer extends React.Component
 {
     render() {
@@ -28,5 +20,13 @@ class AppContainer extends React.Component
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    menuOpen: state.ui.menuOpen,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    actions: bindActionCreators(UIActions, dispatch),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)

@@ -14,7 +14,7 @@ class App extends React.Component
     render() {
         return (
             <div className='app'>
-                <SideMenuContainer />
+                <SideMenuContainer shown={this.props.menuOpen} />
 
                 {/* This renders the sub-route components */}
                 <div className={cx({

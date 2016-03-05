@@ -4,5 +4,8 @@
 import { createTypes, async } from '../lib/createTypes'
 
 export default createTypes(
-    async('HOODIE_LOGIN')
+    // For logging in to an account
+    async('LOGIN'),
+    // Signing up to a hoodie account
+    async('SIGNUP')
 )

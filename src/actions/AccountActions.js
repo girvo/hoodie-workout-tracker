@@ -6,20 +6,20 @@ import hoodie from '../hoodie'
 export function login(username, password) {
     function loginBegin() {
         return {
-            type: types.HOODIE_LOGIN_REQUEST
+            type: types.LOGIN_REQUEST
         }
     }
 
     function loginSuccess(account) {
         return {
-            type: types.HOODIE_LOGIN_SUCCESS,
+            type: types.LOGIN_SUCCESS,
             payload: account
         }
     }
 
     function loginError(err) {
         return {
-            type: types.HOODIE_LOGIN_FAILURE,
+            type: types.LOGIN_FAILURE,
             error: err
         }
     }

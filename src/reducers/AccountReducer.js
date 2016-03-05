@@ -22,7 +22,7 @@ function loginError(state, action) {
 }
 
 export default createStore(initialState, {
-    [types.HOODIE_LOGIN_REQUEST]: loginBegin,
-    [types.HOODIE_LOGIN_SUCCESS]: loginSuccess,
-    [types.HOODIE_LOGIN_FAILURE]: loginError,
+    [types.LOGIN_REQUEST]: loginBegin,
+    [types.LOGIN_SUCCESS]: loginSuccess,
+    [types.LOGIN_FAILURE]: loginError,
 })

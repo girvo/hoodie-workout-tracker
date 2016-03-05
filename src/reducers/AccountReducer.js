@@ -9,19 +9,16 @@ const initialState = Immutable({
     error: null,
 })
 
-function loginSuccess(state, action) {
-    return state.set('loading', false)
-}
-
-function loginError(state, action) {
-    return state.set('loading', false).set('error', action.error)
-}
-
 export default createReducer(initialState, {
     // Login (async)
     [types.LOGIN_REQUEST]: (state, action) => state.set('loading', true),
-    [types.LOGIN_SUCCESS]: loginSuccess,
-    [types.LOGIN_FAILURE]: loginError,
+    [types.LOGIN_SUCCESS]: (state, action) => state.merge({
+        loading: false,
+    }),
+    [types.LOGIN_FAILURE]: (state, action) => state.merge({
+        loading: false,
+        error: action.error,
+    }),
 
     // Logout (async)
     [types.LOGOUT_REQUEST]: (state, action) => state.set('loading', true),

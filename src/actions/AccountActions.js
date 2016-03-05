@@ -51,3 +51,9 @@ export function logout() {
         }
     }
 }
+
+export function clearError() {
+    return {
+        type: types.CLEAR_ERROR,
+    }
+}

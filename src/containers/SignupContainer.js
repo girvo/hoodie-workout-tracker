@@ -1,26 +1,26 @@
 import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
-import LoginPage from '../components/Login'
+import SignupPage from '../components/SignUp'
 
 // State management
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as UIActions from '../actions/UIActions'
 import * as AccountActions from '../actions/AccountActions'
+import * as SignupActions from '../actions/SignupActions'
 
-class LoginContainer extends React.Component
+class SignupContainer extends React.Component
 {
     render() {
         return (
-            <LoginPage
-                loggedIn={this.props.loggedIn}
+            <SignupPage
                 user={this.props.user}
-                loading={this.props.loading}
                 error={this.props.error}
+                loading={this.props.loading}
                 actions={{
+                    signup: this.props.signup,
                     account: this.props.account,
-                    setTitle: this.props.ui.setTitle,
-                    clearError: this.props.account.clearError,
+                    ui: this.props.ui,
                 }}
             />
         )
@@ -28,15 +28,15 @@ class LoginContainer extends React.Component
 }
 
 const mapStateToProps = (state) => ({
-    loggedIn: state.account.loggedIn,
-    user: state.account.user,
-    loading: state.account.loading,
-    error: state.account.error,
+    user: state.signup.user,
+    error: state.signup.error,
+    loading: state.signup.loading,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     account: bindActionCreators(AccountActions, dispatch),
+    signup: bindActionCreators(SignupActions, dispatch),
     ui: bindActionCreators(UIActions, dispatch),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer)

@@ -10,9 +10,12 @@ class SignUp extends React.Component
         password: '',
     }
 
+    componentDidMount() {
+        this.props.actions.ui.setTitle('Sign-up')
+    }
+
     render() {
-        const {isLoading} = this.props
-        const disabled = this.state.username.length <= 0 || this.state.password.length <= 7 || isLoading
+        const disabled = this.state.username.length <= 0 || this.state.password.length <= 7 || this.props.loading
         const btnClass = cx({
             'pure-button': true,
             'pure-button-primary': true,
@@ -46,8 +49,8 @@ class SignUp extends React.Component
                         onClick={ev => {
                             ev.preventDefault()
                             if (!disabled) {
-                                //this.props.signUp(Object.assign({}, this.state))
-                                console.log('signup', this.state);
+                                const {username, password} = this.state
+                                this.props.actions.signup.signUp(username, password)
                             }
                         }}>
                         Create account

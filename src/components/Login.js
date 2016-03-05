@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
-import {Link} from 'react-router'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { Link } from 'react-router'
+import FaClose from 'react-icons/lib/fa/close'
 import cx from 'classnames'
 
 class Login extends React.Component
@@ -19,7 +21,7 @@ class Login extends React.Component
     }
 
     componentDidMount() {
-        this.props.setTitle('Login')
+        this.props.actions.setTitle('Login')
     }
 
     render() {
@@ -31,6 +33,22 @@ class Login extends React.Component
             'pure-button-disabled': disabled,
             'login-button': true,
         })
+
+        let errorMessage = [];
+        if (error !== null) {
+            errorMessage = (
+                <div key='loginErrorMessage'
+                    className={cx({
+                        'error': true,
+                        'login-errors': true,
+                    })}>
+                    <span className='error-message-text'>
+                        Error: {error !== null ? this.errorToMessage(error) : ''}
+                    </span>
+                    <FaClose onClick={() => this.props.actions.clearError() } />
+                </div>
+            )
+        }
 
         return (
             <div className='login'>
@@ -59,28 +77,28 @@ class Login extends React.Component
                         onClick={ev => {
                             ev.preventDefault()
                             if (!disabled) {
-                                this.props.account.login(
-                                    this.state.username,
-                                    this.state.password
-                                )
+                                const { username, password } = this.state
+                                this.props.actions.account.login(username, password)
                             }
                         }}>
                         Login
                     </button>
                 </form>
 
-                <div
-                    className={cx({
-                        'error': true,
-                        'login-errors': true,
-                    })}
-                    hidden={error === null}>
-                    Error: {error !== null ? this.errorToMessage(error) : ''}
-                </div>
+                <ReactCSSTransitionGroup
+                    transitionName='errorMessage'
+                    transitionAppear={true}
+                    transitionAppearTimeout={300}
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}>
+                    {errorMessage}
+                </ReactCSSTransitionGroup>
 
                 <div className='login-signup'>
-                    <p>Don't have an account?</p>
-                    <Link to='/signup'>Click here to sign-up</Link>
+                    <div>
+                        <p>Don't have an account?</p>
+                        <Link to='/signup'>Click here to sign-up</Link>
+                    </div>
                 </div>
             </div>
         )

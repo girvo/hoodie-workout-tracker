@@ -5,5 +5,8 @@ export default createTypes(
     async('LOGIN'),
 
     // Logging out
-    async('LOGOUT')
+    async('LOGOUT'),
+
+    // Clearing error
+    'CLEAR_ERROR',
 )

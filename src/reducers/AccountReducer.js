@@ -4,15 +4,9 @@ import createReducer from '../lib/createReducer'
 
 const initialState = Immutable({
     loggedIn: false,
-    account: null,
     loading: false,
+    account: null,
     error: null,
-
-    signup: {
-        user: null,
-        error: null,
-        loading: false,
-    }
 })
 
 // Login reducers
@@ -28,34 +22,22 @@ function loginError(state, action) {
     return state.set('loading', false).set('error', action.error)
 }
 
-// Sign-up reducers
-function signUpBegin(state, action) {
-    return state
-        .setIn(['signup', 'loading'], true)
-}
-
-function signUpSuccess(state, action) {
-    return state
-        .setIn(['signup', 'loading'], false)
-        .setIn(['signup','user'], action.payload)
-        .setIn(['signup','error'], null)
-}
-
-function signUpFailure(state, action) {
-    return state
-        .setIn(['signup','loading'], false)
-        .setIn(['signup','error'], action.error)
-        .setIn(['signup', 'user'], null)
-}
-
 export default createReducer(initialState, {
     // Login (async)
     [types.LOGIN_REQUEST]: loginBegin,
     [types.LOGIN_SUCCESS]: loginSuccess,
     [types.LOGIN_FAILURE]: loginError,
 
-    // Sign-up (async)
-    [types.SIGNUP_REQUEST]: signUpBegin,
-    [types.SIGNUP_SUCCESS]: signUpSuccess,
-    [types.SIGNUP_FAILURE]: signUpFailure,
+    // Logout (async)
+    [types.LOGOUT_REQUEST]: (state, action) => state.set('loading', true),
+    [types.LOGOUT_SUCCESS]: (state, action) => state.merge({
+        loggedIn: false,
+        account: null,
+        error: null,
+        loading: false
+    }),
+    [types.LOGOUT_FAILURE]: (state, action) => state.merge({
+        loading: false,
+        error: action.error,
+    })
 })

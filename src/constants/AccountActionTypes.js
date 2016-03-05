@@ -4,6 +4,6 @@ export default createTypes(
     // For logging in to an account
     async('LOGIN'),
 
-    // Signing up to a hoodie account
-    async('SIGNUP')
+    // Logging out
+    async('LOGOUT')
 )

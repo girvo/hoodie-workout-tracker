@@ -9,11 +9,6 @@ const initialState = Immutable({
     error: null,
 })
 
-// Login reducers
-function loginBegin(state, action) {
-    return state.set('loading', true)
-}
-
 function loginSuccess(state, action) {
     return state.set('loading', false)
 }
@@ -24,7 +19,7 @@ function loginError(state, action) {
 
 export default createReducer(initialState, {
     // Login (async)
-    [types.LOGIN_REQUEST]: loginBegin,
+    [types.LOGIN_REQUEST]: (state, action) => state.set('loading', true),
     [types.LOGIN_SUCCESS]: loginSuccess,
     [types.LOGIN_FAILURE]: loginError,
 

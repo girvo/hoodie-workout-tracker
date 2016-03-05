@@ -1,4 +1,4 @@
-import * as types from '../constants/AccountActionTypes'
+import types from '../constants/AccountActionTypes'
 
 // Hoodie Client API
 import hoodie from '../hoodie'

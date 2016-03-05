@@ -1,4 +1,4 @@
-import * as types from '../constants/UIActionTypes'
+import types from '../constants/UIActionTypes'
 import Immutable from 'seamless-immutable'
 import createStore from '../lib/createStore'
 

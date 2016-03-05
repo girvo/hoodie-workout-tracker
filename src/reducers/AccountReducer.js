@@ -1,4 +1,4 @@
-import * as types from '../constants/AccountActionTypes'
+import types from '../constants/AccountActionTypes'
 import Immutable from 'seamless-immutable'
 import createStore from '../lib/createStore'
 

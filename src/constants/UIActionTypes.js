@@ -1,8 +1,14 @@
 // UI actions for all UI state
 // ie. menu handling, etc.
 
-export const MENU_OPEN = 'MENU_OPEN'
-export const MENU_CLOSE = 'MENU_CLOSE'
-export const MENU_TOGGLE = 'MENU_TOGGLE'
+import { createTypes, async } from '../lib/createTypes'
 
-export const SET_TITLE = 'SET_TITLE'
+export default createTypes(
+    // Menu handling
+    'MENU_OPEN',
+    'MENU_CLOSE',
+    'MENU_TOGGLE',
+
+    // Sets titlebar's text
+    'SET_TITLE',
+)

@@ -1,6 +1,6 @@
 import types from '../constants/UIActionTypes'
 import Immutable from 'seamless-immutable'
-import createStore from '../lib/createStore'
+import createReducer from '../lib/createReducer'
 
 const initialState = Immutable({
     menuOpen: false,
@@ -29,7 +29,7 @@ function setToolbarTitle(state, action) {
     return state.set('toolbarTitle', action.payload.title);
 }
 
-export default createStore(initialState, {
+export default createReducer(initialState, {
     [types.MENU_OPEN]: openMenu,
     [types.MENU_CLOSE]: closeMenu,
     [types.MENU_TOGGLE]: toggleMenu,

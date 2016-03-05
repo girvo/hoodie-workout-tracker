@@ -1,6 +1,6 @@
 import types from '../constants/AccountActionTypes'
 import Immutable from 'seamless-immutable'
-import createStore from '../lib/createStore'
+import createReducer from '../lib/createReducer'
 
 const initialState = Immutable({
     loggedIn: false,
@@ -48,7 +48,7 @@ function signUpFailure(state, action) {
         .setIn(['signup', 'user'], null)
 }
 
-export default createStore(initialState, {
+export default createReducer(initialState, {
     // Login (async)
     [types.LOGIN_REQUEST]: loginBegin,
     [types.LOGIN_SUCCESS]: loginSuccess,

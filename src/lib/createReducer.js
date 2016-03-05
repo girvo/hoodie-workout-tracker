@@ -1,13 +1,13 @@
 /**
- * createStore for wiring up redux-based reducers easily.
+ * createReducer for wiring up redux-based reducers easily.
  *
  * Example:
- *   export default createStore(initialState, {
+ *   export default createReducer(initialState, {
  *     [INCREMENT_COUNTER]: increment,
  *     [DECREMENT_COUNTER]: decrement,
  *   })
  */
-export default function createStore(initialState, handlers) {
+export default function createReducer(initialState, handlers) {
     return (state = initialState, action) =>
         handlers[action.type] ?
             handlers[action.type](state, action) :

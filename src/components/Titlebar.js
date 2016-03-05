@@ -1,29 +1,20 @@
-import React, {
-    PropTypes,
-    Component,
-} from 'react'
-
-import cx from 'classnames'
-import {observer} from 'mobx-react'
-
-import UIStore from '../stores/UIStore'
+import React, { PropTypes } from 'react'
 import TouchableOpacity from '../containers/TouchableOpacity'
+import cx from 'classnames'
 
 // Pure sub-components
 let Title = ({title}) => <span className='title'>{title}</span>
 
-@observer
-class Titlebar extends Component
+class Titlebar extends React.Component
 {
     static defaultProps = {
-        ui: UIStore
+        title: 'Workout Tracker'
     }
 
     static propTypes = {
         title: React.PropTypes.string.isRequired,
         left: React.PropTypes.element,
         right: React.PropTypes.element,
-        ui: React.PropTypes.object,
     }
 
     render() {
@@ -37,7 +28,7 @@ class Titlebar extends Component
                     {this.props.left}
                 </TouchableOpacity>
 
-                <Title title={this.props.ui.pageTitle} />
+                <Title title={this.props.title} />
 
                 <TouchableOpacity className='title-icon right'>
                     {this.props.right}

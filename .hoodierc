@@ -1,6 +1,5 @@
 {
-    "adminPassword": "secret",
-    "dbUrl": "http://admin:secret@127.0.0.1:5984",
+    "dbUrl": "http://admin:secret@hoodie.docker:5984",
     "logLevel": "silly",
     "www": "www"
 }

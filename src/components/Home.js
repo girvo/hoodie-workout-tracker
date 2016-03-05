@@ -1,16 +1,9 @@
-import React, {
-    PropTypes,
-    Component,
-} from 'react'
+import React, { PropTypes } from 'react'
 
-import {observer} from 'mobx-react'
-import UIStore from '../stores/UIStore'
-
-@observer
-class Home extends Component
+class Home extends React.Component
 {
-    static defaultProps = {
-        ui: UIStore
+    componentDidMount() {
+        this.props.actions.ui.setTitle('Welcome')
     }
 
     render() {

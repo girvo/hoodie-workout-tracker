@@ -2,7 +2,7 @@
 
 /* Menu-specific variables */
 $menu-width: 225px;
-$menu-transition: all 0.3s ease-out;
+$menu-transition: all 0.3s ease-in-out;
 $link-touch-background: #eee;
 
 .app-menu {

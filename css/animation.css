@@ -2,3 +2,21 @@
  * Page-transition animations, et al.
  */
 @import './variables';
+
+.errorMessage-enter {
+    opacity: 0.01;
+}
+
+.errorMessage-enter.errorMessage-enter-active {
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.errorMessage-leave {
+    opacity: 1;
+}
+
+.errorMessage-leave.errorMessage-leave-active {
+    opacity: 0.01;
+    transition: opacity 300ms ease-in;
+}

@@ -1,29 +1,31 @@
-import React, {
-    PropTypes,
-    Component,
-} from 'react'
-
+import React, { PropTypes } from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { Link } from 'react-router'
+import FaClose from 'react-icons/lib/fa/close'
 import cx from 'classnames'
-import {Link} from 'react-router'
-import {observer} from 'mobx-react'
 
-import UIStore from '../stores/UIStore'
-import UserStore from '../stores/UserStore'
-
-@observer
-class Login extends Component
+class Login extends React.Component
 {
     state = {
         username: '',
         password: '',
     }
 
-    static defaultProps = {
-        ui: UIStore,
-        user: UserStore,
+    errorToMessage(error) {
+        switch (error.name) {
+            case 'UnauthorizedError':
+                return 'Invalid login credentials'
+            default:
+                return 'Unknown error occurred'
+        }
+    }
+
+    componentDidMount() {
+        this.props.actions.setTitle('Login')
     }
 
     render() {
+        const {error} = this.props
         const disabled = this.state.username.length <= 0 || this.state.password.length <= 0
         const btnClass = cx({
             'pure-button': true,
@@ -31,6 +33,22 @@ class Login extends Component
             'pure-button-disabled': disabled,
             'login-button': true,
         })
+
+        let errorMessage = [];
+        if (error !== null) {
+            errorMessage = (
+                <div key='loginErrorMessage'
+                    className={cx({
+                        'error': true,
+                        'login-errors': true,
+                    })}>
+                    <span className='error-message-text'>
+                        Error: {error !== null ? this.errorToMessage(error) : ''}
+                    </span>
+                    <FaClose onClick={() => this.props.actions.clearError() } />
+                </div>
+            )
+        }
 
         return (
             <div className='login'>
@@ -59,25 +77,28 @@ class Login extends Component
                         onClick={ev => {
                             ev.preventDefault()
                             if (!disabled) {
-                                this.props.user.login(this.state)
+                                const { username, password } = this.state
+                                this.props.actions.account.login(username, password)
                             }
                         }}>
                         Login
                     </button>
                 </form>
 
-                <div
-                    className={cx({
-                        'error': true,
-                        'login-errors': true,
-                    })}
-                    hidden={!this.props.user.hasErrors}>
-                    Error: {this.props.user.hasErrors ? this.props.user.error.message : ''}
-                </div>
+                <ReactCSSTransitionGroup
+                    transitionName='errorMessage'
+                    transitionAppear={true}
+                    transitionAppearTimeout={300}
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}>
+                    {errorMessage}
+                </ReactCSSTransitionGroup>
 
                 <div className='login-signup'>
-                    <p>Don't have an account?</p>
-                    <Link to='/signup'>Click here to sign-up</Link>
+                    <div>
+                        <p>Don't have an account?</p>
+                        <Link to='/signup'>Click here to sign-up</Link>
+                    </div>
                 </div>
             </div>
         )

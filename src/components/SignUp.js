@@ -1,17 +1,8 @@
-import React, {
-    PropTypes,
-    Component
-} from 'react'
-
-import cx from 'classnames'
+import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
-import {observer} from 'mobx-react'
+import cx from 'classnames'
 
-import UIStore from '../stores/UIStore'
-import UserStore from '../stores/UserStore'
-
-@observer
-class SignUp extends Component
+class SignUp extends React.Component
 {
     // Uses internal state so we can collate and send off to hoodie
     state = {
@@ -19,17 +10,16 @@ class SignUp extends Component
         password: '',
     }
 
-    static defaultProps = {
-        ui: UIStore,
-        user: UserStore,
+    componentDidMount() {
+        this.props.actions.ui.setTitle('Sign-up')
     }
 
     render() {
-        const disabled = this.state.username.length <= 0 || this.state.password.length <= 7
+        const disabled = this.state.username.length <= 0 || this.state.password.length <= 7 || this.props.loading
         const btnClass = cx({
             'pure-button': true,
             'pure-button-primary': true,
-            'pure-button-disabled': disabled || this.props.user.loading,
+            'pure-button-disabled': disabled,
             'login-button': true,
         })
 
@@ -59,7 +49,8 @@ class SignUp extends Component
                         onClick={ev => {
                             ev.preventDefault()
                             if (!disabled) {
-                                this.props.user.signUp(Object.assign({}, this.state))
+                                const {username, password} = this.state
+                                this.props.actions.signup.signUp(username, password)
                             }
                         }}>
                         Create account

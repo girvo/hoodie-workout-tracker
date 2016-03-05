@@ -1,6 +1,3 @@
-// UI actions for all UI state
-// ie. menu handling, etc.
-
 import { createTypes, async } from '../lib/createTypes'
 
 export default createTypes(

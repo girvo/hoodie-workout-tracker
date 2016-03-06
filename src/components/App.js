@@ -27,17 +27,8 @@ class App extends React.Component
                         left={<MenuButton onClick={this.props.toggleMenu} />}
                     />
 
-                    {/* Animated transitions between pages */}
-
                     <div className='content-body'>
-                        <ReactCSSTransitionGroup
-                            transitionName='appTransition'
-                            transitionEnterTimeout={300}
-                            transitionLeaveTimeout={300}>
-                            {React.cloneElement(this.props.children, {
-                                key: this.props.location.pathname
-                            })}
-                        </ReactCSSTransitionGroup>
+                        {this.props.children}
                     </div>
                 </div>
             </div>

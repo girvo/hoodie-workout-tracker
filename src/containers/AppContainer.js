@@ -14,7 +14,8 @@ class AppContainer extends React.Component
             <App
                 menuOpen={this.props.menuOpen}
                 toggleMenu={this.props.actions.toggleMenu}
-                title={this.props.title}>
+                title={this.props.title}
+                location={this.props.location}>
                 {/* Render the children as normal for react-router */}
                 {this.props.children}
             </App>

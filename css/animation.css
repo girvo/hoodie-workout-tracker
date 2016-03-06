@@ -20,3 +20,45 @@
     opacity: 0.01;
     transition: opacity 300ms ease-in;
 }
+
+.appTransition-enter {
+    display: flex;
+    position: absolute;
+    top: 57px;
+    flex: 1;
+    width: calc(100% - 20px);
+    left: 100%;
+    min-height: calc(100% - 58px);
+}
+
+.appTransition-enter.appTransition-enter-active {
+    display: flex;
+    position: absolute;
+    top: 57px;
+    flex: 1;
+    transition: all 400ms ease-out;
+    width: calc(100% - 20px);
+    left: 0;
+    min-height: calc(100% - 58px);
+}
+
+.appTransition-leave {
+    display: flex;
+    position: absolute;
+    top: 57px;
+    flex: 1;
+    width: calc(100% - 20px);
+    left: 0;
+    min-height: calc(100% - 58px);
+}
+
+.appTransition-leave.appTransition-leave-active {
+    display: flex;
+    position: absolute;
+    top: 57px;
+    flex: 1;
+    width: calc(100% - 20px);
+    transition: all 400ms ease-out;
+    left: -100%;
+    min-height: calc(100% - 58px);
+}

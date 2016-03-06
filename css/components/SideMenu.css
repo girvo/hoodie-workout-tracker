@@ -13,6 +13,7 @@ $link-touch-background: #eee;
     transition: $menu-transition;
     left: -$menu-width;
     max-width: $menu-width;
+    z-index: 20;
 
     @media screen and (--screen-md) {
         left: 0px !important;

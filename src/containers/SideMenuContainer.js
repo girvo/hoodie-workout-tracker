@@ -6,6 +6,7 @@ import SideMenu from '../components/SideMenu'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as UIActions from '../actions/UIActions'
+import * as AccountActions from '../actions/AccountActions'
 
 class SideMenuContainer extends React.Component
 {
@@ -13,8 +14,11 @@ class SideMenuContainer extends React.Component
         return (
             <SideMenu
                 shown={this.props.shown}
-                closeMenu={this.props.actions.closeMenu}
-                loggedIn={false}
+                loggedIn={this.props.loggedIn}
+                actions={{
+                    closeMenu: this.props.uiActions.closeMenu,
+                    logout: this.props.accountActions.logout
+                }}
             />
         )
     }
@@ -22,10 +26,12 @@ class SideMenuContainer extends React.Component
 
 const mapStateToProps = (state) => ({
     shown: state.ui.menuOpen,
+    loggedIn: state.account.loggedIn,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(UIActions, dispatch),
+    uiActions: bindActionCreators(UIActions, dispatch),
+    accountActions: bindActionCreators(AccountActions, dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SideMenuContainer)

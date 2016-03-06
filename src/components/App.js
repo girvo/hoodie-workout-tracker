@@ -12,6 +12,10 @@ class App extends React.Component
         router: PropTypes.object.isRequired
     }
 
+    componentDidMount() {
+        this.props.actions.hydrateUser()
+    }
+
     render() {
         return (
             <div className='app'>

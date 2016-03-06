@@ -17,6 +17,7 @@
 @import './components/Titlebar';
 @import './components/Login';
 @import './components/SignUp';
+@import './components/Notification';
 
 body {
     /**

@@ -1,0 +1,24 @@
+@import '../variables';
+
+.notification {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    text-align: left;
+    font-size: 16px;
+    color: #fff;
+    background: $notify;
+
+    &.error {
+        background: $notify-danger;
+    }
+
+    &.success {
+        background: $notify-success;
+    }
+
+    &.warning {
+        background: orange;
+    }
+}

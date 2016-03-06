@@ -57,3 +57,17 @@ export function clearError() {
         type: types.CLEAR_ERROR,
     }
 }
+
+export function hydrateUser() {
+    return (dispatch, getState) => {
+        if (hoodie.account.isSignedIn()) {
+            dispatch({
+                type: types.HYDRATE_USER,
+                payload: {
+                    id: hoodie.account.id,
+                    username: hoodie.account.username,
+                }
+            })
+        }
+    }
+}

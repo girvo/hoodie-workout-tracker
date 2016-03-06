@@ -29,7 +29,9 @@ $brand-quaternary: #DAB691;
 /**
  * Notifications
  */
+$notify: #1f8dd6;
 $notify-danger: #EA5555;
+$notify-success: green;
 
 /**
  * Font families

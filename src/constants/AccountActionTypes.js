@@ -9,4 +9,7 @@ export default createTypes(
 
     // Clearing error
     'CLEAR_ERROR',
+
+    // Hydrate on load
+    'HYDRATE_USER',
 )

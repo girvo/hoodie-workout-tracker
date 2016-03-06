@@ -6,6 +6,7 @@ import App from '../components/App'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import * as UIActions from '../actions/UIActions'
+import * as AccountActions from '../actions/AccountActions'
 
 class AppContainer extends React.Component
 {
@@ -13,9 +14,12 @@ class AppContainer extends React.Component
         return (
             <App
                 menuOpen={this.props.menuOpen}
-                toggleMenu={this.props.actions.toggleMenu}
+                toggleMenu={this.props.uiActions.toggleMenu}
                 title={this.props.title}
-                location={this.props.location}>
+                location={this.props.location}
+                actions={{
+                    hydrateUser: this.props.accountActions.hydrateUser
+                }}>
                 {/* Render the children as normal for react-router */}
                 {this.props.children}
             </App>
@@ -29,7 +33,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(UIActions, dispatch),
+    uiActions: bindActionCreators(UIActions, dispatch),
+    accountActions: bindActionCreators(AccountActions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContainer)

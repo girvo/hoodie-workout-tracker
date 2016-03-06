@@ -3,6 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { Link } from 'react-router'
 import FaClose from 'react-icons/lib/fa/close'
 import cx from 'classnames'
+import Notification from './Notification'
 
 class Login extends React.Component
 {
@@ -25,7 +26,7 @@ class Login extends React.Component
     }
 
     render() {
-        const {error} = this.props
+        const {error, user} = this.props
         const disabled = this.state.username.length <= 0 || this.state.password.length <= 0
         const btnClass = cx({
             'pure-button': true,
@@ -47,6 +48,13 @@ class Login extends React.Component
                     </span>
                     <FaClose onClick={() => this.props.actions.clearError() } />
                 </div>
+            )
+        }
+
+        let notification = [];
+        if (user !== null) {
+            notification = (
+                <Notification message='Logged in successfully' />
             )
         }
 
@@ -84,6 +92,8 @@ class Login extends React.Component
                         Login
                     </button>
                 </form>
+
+                {notification}
 
                 <ReactCSSTransitionGroup
                     transitionName='errorMessage'

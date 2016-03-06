@@ -39,5 +39,11 @@ export default createReducer(initialState, {
         user: null,
         error: action.error,
     }),
-    [types.CLEAR_ERROR]: (state, action) => state.set('error', null)
+    [types.CLEAR_ERROR]: (state, action) => state.set('error', null),
+    [types.HYDRATE_USER]: (state, action) => state.merge({
+        loading: false,
+        loggedIn: true,
+        user: action.payload,
+        error: null
+    })
 })

@@ -1,5 +1,14 @@
 @import './variables';
 
 .pure-button-primary {
-    background-color: $brand-secondary;
+    /*background-color: $brand-secondary;*/
+    background-image: linear-gradient(to bottom, $brand-secondary, color($brand-secondary lightness(-15%)));
+
+    &:focus {
+        background: color($brand-secondary lightness(-5%));
+    }
+
+    &:hover {
+        background: color($brand-secondary lightness(-5%));
+    }
 }

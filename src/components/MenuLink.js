@@ -18,7 +18,7 @@ class MenuLink extends React.Component
 
         // Set defaults
         to = to === undefined ? '' : to
-        onClick = onClick === undefined ? this.props.closeMenu : onClick
+        onClick = onClick === undefined ? this.props.actions.closeMenu : onClick
 
         // Setup props to share between the two components
         let linkProps = {

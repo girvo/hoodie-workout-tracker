@@ -32,8 +32,8 @@ class App extends React.Component
                     <div className='content-body'>
                         <ReactCSSTransitionGroup
                             transitionName='appTransition'
-                            transitionEnterTimeout={400}
-                            transitionLeaveTimeout={400}>
+                            transitionEnterTimeout={300}
+                            transitionLeaveTimeout={300}>
                             {React.cloneElement(this.props.children, {
                                 key: this.props.location.pathname
                             })}

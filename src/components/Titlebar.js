@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import TouchableOpacity from '../containers/TouchableOpacity'
 import cx from 'classnames'
 

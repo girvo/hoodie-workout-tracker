@@ -42,7 +42,7 @@
 - This project also uses PostCSS, with the `precss` and `postcss-scss` plugins
 - All files should end in `.css`, but can utilise SCSS features and syntax
 - In addition, `@import` will respect `node_modules`
- - Given a dependency called `example` with a CSS file in it's `dist` folder, you can import it via:
+ - Given a dependency called `example` with a CSS file in it's `dist` folder that lives under `node_modules`, you can import it via:
 
         ```scss
         // css/app.css

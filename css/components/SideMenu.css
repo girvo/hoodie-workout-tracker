@@ -14,6 +14,7 @@ $link-touch-background: #eee;
     left: -$menu-width;
     max-width: $menu-width;
     z-index: 20;
+    transform: translate3d(0,0,0);
 
     @media screen and (--screen-md) {
         left: 0px !important;
@@ -25,7 +26,7 @@ $link-touch-background: #eee;
 
     .pure-menu-link {
         color: #eee;
-        transition: all 0.15s;
+        transition: all 0.15s ease-in-out;
 
         &:active {
             background-color: transparent;

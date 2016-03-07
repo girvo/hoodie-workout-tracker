@@ -19,7 +19,7 @@
 
 - Start the CouchDB container with `npm run docker:couchdb` in a separate terminal
 - Find the IP address of your Docker container (`localhost` on Linux, VM ip under OS X), for me it is `196.168.64.2`
-- Navigate to http://192.168.64.2:5984/_utils/session.html in your browser, and setup an admin account
+- Navigate to `http://docker-ip-address/_utils/session.html` in your browser, and setup an admin account
 - Adjust the `.hoodierc` file with the correct credentials and IP address from the above steps
 - Run `git update-index --assume-unchanged .hoodierc` after making your changes
 - `npm run hoodie`

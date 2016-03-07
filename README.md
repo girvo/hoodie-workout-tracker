@@ -45,8 +45,19 @@
  - Given a dependency called `example` with a CSS file in it's `dist` folder, you can import it via:
 
         ```scss
+        // css/app.css
         @import 'example/dist/example.css';
         ```
+
+### Testing
+
+- This project uses `tape` as it's test runner
+ - `npm test`
+- Tests can be run in the browser
+ - `npm run test:browser`
+ - Navigate to http://localhost:7001
+- You can watch the code-base and re-run tests whenever a source file or test changes
+ - `npm run test:watch`
 
 ## License
 

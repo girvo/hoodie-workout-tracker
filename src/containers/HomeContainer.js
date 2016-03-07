@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
-import HomePage from '../components/Home'
+import HomePage from '../components/pages/Home'
 
 // State management
 import {bindActionCreators} from 'redux'

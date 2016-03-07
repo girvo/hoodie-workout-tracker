@@ -1,7 +1,8 @@
 // This file exports all reducers
 
-// Global UI store
+// UI stores
 export { default as ui } from './UIReducer'
+export { default as modal } from './ModalReducer'
 
 // Account handling
 export { default as account } from './AccountReducer'

@@ -18,6 +18,7 @@
 @import './components/Login';
 @import './components/SignUp';
 @import './components/Notification';
+@import './components/Loading';
 
 body {
     /**

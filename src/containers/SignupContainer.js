@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
-import SignupPage from '../components/SignUp'
+import SignupPage from '../components/pages/SignUp'
 
 // State management
 import {bindActionCreators} from 'redux'

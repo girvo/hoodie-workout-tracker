@@ -3,7 +3,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { Link } from 'react-router'
 import FaClose from 'react-icons/lib/fa/close'
 import cx from 'classnames'
-import Notification from './Notification'
+import Notification from '../Notification'
+import Loading from '../Loading'
 
 class Login extends React.Component
 {
@@ -58,6 +59,11 @@ class Login extends React.Component
             )
         }
 
+        let loading = [];
+        if (this.props.loading) {
+            loading = (<Loading key='loading' className={'loading'} />)
+        }
+
         return (
             <div className='login'>
                 <form className='pure-form'>
@@ -110,6 +116,8 @@ class Login extends React.Component
                         <Link to='/signup'>Click here to sign-up</Link>
                     </div>
                 </div>
+
+                {loading}
             </div>
         )
     }

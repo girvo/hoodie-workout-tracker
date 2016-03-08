@@ -2,7 +2,7 @@ import types from '../constants/ModalActionTypes'
 
 // Uses a thunk to hide the modal if it's already up to change the content
 export function showModal(message, title = '') {
-    return function(dispatch, getState) {
+    return () => (dispatch, getState) => {
         if (getState().modal.shown) {
             dispatch(hideModal())
         }

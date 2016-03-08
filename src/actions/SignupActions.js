@@ -1,10 +1,7 @@
 import types from '../constants/SignupActionTypes'
 
-// Hoodie Client API
-import hoodie from '../hoodie'
-
 export function signUp(username, password) {
-    return function(dispatch, getState) {
+    return ({hoodie}) => (dispatch, getState) => {
         // optimistically update the UI
         dispatch({
             type: types.SIGNUP_REQUEST

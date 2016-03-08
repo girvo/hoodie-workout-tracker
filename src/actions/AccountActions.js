@@ -1,10 +1,7 @@
 import types from '../constants/AccountActionTypes'
 
-// Hoodie Client API
-import hoodie from '../hoodie'
-
 export function login(username, password) {
-    return (dispatch, getState) => {
+    return ({hoodie}) => (dispatch, getState) => {
         // optimistically update the UI with loading
         dispatch({ type: types.LOGIN_REQUEST })
         console.log('Beginning login')
@@ -29,7 +26,7 @@ export function login(username, password) {
 }
 
 export function logout() {
-    return (dispatch, getState) => {
+    return ({hoodie}) => (dispatch, getState) => {
         const { loggedIn } = getState().account
 
         if (loggedIn) {
@@ -59,7 +56,7 @@ export function clearError() {
 }
 
 export function hydrateUser() {
-    return (dispatch, getState) => {
+    return ({hoodie}) => (dispatch, getState) => {
         if (hoodie.account.isSignedIn()) {
             dispatch({
                 type: types.HYDRATE_USER,

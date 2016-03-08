@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import {Link} from 'react-router'
 import cx from 'classnames'
+import Loading from '../Loading'
 
 class SignUp extends React.Component
 {
@@ -22,6 +23,11 @@ class SignUp extends React.Component
             'pure-button-disabled': disabled,
             'login-button': true,
         })
+
+        let loading = [];
+        if (this.props.loading) {
+            loading = (<Loading key='loading' className={'loading'} />)
+        }
 
         return (
             <div className='signup'>
@@ -56,6 +62,7 @@ class SignUp extends React.Component
                         Create account
                     </button>
                 </form>
+                {loading}
             </div>
         )
     }
